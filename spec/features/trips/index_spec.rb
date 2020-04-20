@@ -19,11 +19,5 @@ describe "As a visitor", type: :feature do
     expect(page).to have_link(Trip2.title) 
     expect(page).to have_link(Trip3.title) 
     expect(page).to have_link(Trip4.title) 
-
   end
 end
-
-
-# As a visitor
-# When I visit a trips index page
-# I see the titles of all trips in my database listed in order of their mileage (ascending order)
