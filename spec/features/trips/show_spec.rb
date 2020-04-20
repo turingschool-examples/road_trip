@@ -23,13 +23,7 @@ RSpec.describe "As a visitor", type: :feature do
       expect(page).to have_content(Trip1.title)  
       expect(page).to have_content(Trip1.destination_city)  
       expect(page).to have_content(Trip1.mileage)  
-      # expect(page).to have_content(Trip1.travelers)  
+      expect(page).to have_content(Trip1.travelers.first.name)  
     end
   end
 end
-# As a visitor
-# When I visit a trips index page
-# And I click on a trips title
-# I’m taken to that trip’s show page
-# And I can see that trips title, destination city, mileage
-# And I also see a list of the names of the travelers that are on this trip
