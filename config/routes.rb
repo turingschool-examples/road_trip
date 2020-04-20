@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 
   get '/trips', to: "trips#index"
   get '/trips/:id', to: "trips#show"
-  delete '/trips/:id/:traveler_id', to: "travelers#destroy"
+  delete '/trips/:id/:traveler_id', to: "triptravelers#destroy"
 end
