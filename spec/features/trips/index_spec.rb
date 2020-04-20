@@ -12,10 +12,10 @@ RSpec.describe 'As a visitor' do
 
   describe 'When I visit a trips index page' do
     it 'I see all trips in ASC order according to mileage' do
-      expect(page).to have_content("Who is America Anyway?")
-      expect(page).to have_content("Bike n’ Climb")
-      expect(page).to have_content("The Big Apple")
-      expect(page).to have_content("Cheese Tour 2020")
+      expect(page).to have_content(@trip2.title)
+      expect(page).to have_content(@trip4.title)
+      expect(page).to have_content(@trip3.title)
+      expect(page).to have_content(@trip1.title)
     end
   end
 end

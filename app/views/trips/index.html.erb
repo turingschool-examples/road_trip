@@ -1,9 +1,11 @@
 <h1>All Trips</h1>
 
-
-<% @trips.each do |trip| %>
+<% @trips_ordered.each do |trip| %>
   <%= link_to trip.title, "/trips/#{trip.id}" %>
 <% end %>
+
+
+
 
 
 
