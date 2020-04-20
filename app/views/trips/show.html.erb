@@ -9,3 +9,8 @@
   <p><%=traveler.name%></p>
   <%= link_to "Remove #{traveler.name} From Trip", "/trips/#{@trip.id}/travelers/#{traveler.id}", method: :delete%>
 <%end%>
+
+<h4>Other Trips to This Destination</h4>
+<%@trip.similar_destinations.each do |similar_trip|%>
+  <p><%=link_to similar_trip.title, "/trips/#{similar_trip.id}" if similar_trip.id != @trip.id%></p>
+<%end%>
