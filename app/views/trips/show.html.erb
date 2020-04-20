@@ -2,8 +2,9 @@
 <h2><%= @trip.destination %></h2>
 <h2><%= @trip.mileage %></h2>
 <h2>Travelers:</h2>
-<section class="travelers">
 <% @trip.travelers.each do |traveler| %>
-  <p><%= traveler.name %></p>
+  <section id="traveler-<%= traveler.id %>">
+    <p><%= traveler.name %></p>
+    <%= button_to "Remove", "/trips/#{@trip.id}?traveler_id=#{traveler.id}", method: :patch %>
+  </section>
 <% end %>
-</section>

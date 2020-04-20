@@ -16,12 +16,21 @@ RSpec.describe 'As a visitor' do
       expect(page).to have_content(@trip1.title)
       expect(page).to have_content(@trip1.destination)
       expect(page).to have_content(@trip1.mileage)
+      expect(page).to have_content(@traveler1.name)
+      expect(page).to have_content(@traveler2.name)
+      expect(page).to have_content(@traveler3.name)
+    end
+    it 'Next to each traveler name I see a button to remove that traveler' do
+      visit "/trips/#{@trip1.id}"
 
-      within ".travelers" do
-        expect(page).to have_content(@traveler1.name)
-        expect(page).to have_content(@traveler2.name)
-        expect(page).to have_content(@traveler3.name)
+      within "#traveler-#{@traveler1.id}" do
+        click_button "Remove"
       end
+
+      expect(current_path).to eq("/trips/#{@trip1.id}")
+      expect(page).to_not have_content(@traveler1.name)
+      expect(page).to have_content(@traveler2.name)
+      expect(page).to have_content(@traveler3.name)
     end
   end
 
