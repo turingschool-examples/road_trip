@@ -15,10 +15,10 @@ describe "As a visitor", type: :feature do
   it "I can see the titles of my trip" do
     visit "/trips"
 
-    expect(page).to have_content(Trip1.title) 
-    expect(page).to have_content(Trip2.title) 
-    expect(page).to have_content(Trip3.title) 
-    expect(page).to have_content(Trip4.title) 
+    expect(page).to have_link(Trip1.title) 
+    expect(page).to have_link(Trip2.title) 
+    expect(page).to have_link(Trip3.title) 
+    expect(page).to have_link(Trip4.title) 
 
   end
 end
