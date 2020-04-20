@@ -19,5 +19,4 @@ RSpec.describe "Trip index view", type: :feature do
     expect(trip3.title).to appear_before(trip1.title) 
     
   end
-
 end

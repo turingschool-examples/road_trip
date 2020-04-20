@@ -28,7 +28,5 @@ RSpec.describe "Trip remove travelers", type: :feature do
       expect(page).to_not have_content(traveler1.name)
       expect(page).to have_content(traveler2.name)
     end
-    
   end
-
 end

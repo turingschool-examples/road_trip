@@ -29,10 +29,6 @@ RSpec.describe "Trip show view", type: :feature do
       expect(page).to have_content(traveler2.name)
       expect(page).to_not have_content(traveler3.name)
       expect(page).to_not have_content(traveler4.name)
-
     end
-    
-    
   end
-
 end
