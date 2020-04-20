@@ -26,4 +26,24 @@ RSpec.describe 'Trips show page' do
       expect(page).to have_content(@traveler3.name)
     end
   end
+
+  it "has a button to remove a traveler from that trip next to traveler" do
+    visit "/trips/#{@trip1.id}"
+
+    within "#traveler-#{@traveler1.id}" do
+      expect(page).to have_button('Remove Traveler')
+    end
+  end
+
+  it "removes travelers from the show page" do
+    visit "/trips/#{@trip1.id}"
+    expect(page).to have_content(@traveler1.name)
+
+    within "#traveler-#{@traveler1.id}" do
+      click_button('Remove Traveler')
+    end
+
+    expect(page).to have_current_path("/trips/#{@trip1.id}")
+    expect(page).to_not have_content(@traveler1.name)
+  end
 end
