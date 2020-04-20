@@ -8,6 +8,7 @@ describe Trip, type: :model do
   end
 
   describe 'relationships' do
-    it { should have_many :travelers }
+    it { should have_many :trip_travelers }
+    it { should have_many(:travelers).through(:trip_travelers) }
   end
 end
