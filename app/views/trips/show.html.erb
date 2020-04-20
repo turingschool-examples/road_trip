@@ -4,10 +4,12 @@
   <p>Mileage: <%= @trip.mileage %></p>
 </section>
 
-<section id = "travelers">
+<section class = "travelers">
   <ul>
     <% @trip.travelers.each do |traveler| %>
-      <li><%= traveler.name %></li>
+      <div id = "traveler-<%= traveler.id %>">
+        <li><%= traveler.name %> <%= button_to "Remove Traveler", trip_traveler_path(@trip, traveler), method: :delete %></li>
+      </div>
     <% end %>
   </ul>
 </section>
