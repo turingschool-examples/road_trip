@@ -22,7 +22,7 @@ RSpec.describe "As a visitor", type: :feature do
     end
     it "I can click on a trips title, which takes me to the trip show page
         I see trip info and traveler names" do
-      visit "/trips"
+      visit trips_path
 
       click_link "#{@trip1.title}"
 
@@ -41,7 +41,7 @@ RSpec.describe "As a visitor", type: :feature do
     it "When a click on a trips title, I see a section called 'Other Trips to this Destination'
         And under that title, I see a list of trip titles and links with the same destination" do
 
-      visit "/trips"
+      visit trips_path
 
       click_link "#{@trip4.title}"
 

@@ -19,9 +19,7 @@ RSpec.describe "As a visitor", type: :feature do
       @trip4.travelers << [@traveler4]
     end
     it "Next to each traveler, I see a buttom to remove that traveler from the trip" do
-      visit "/trips"
-
-      visit "/trips"
+      visit trips_path
 
       click_link "#{@trip1.title}"
       expect(current_path).to eq("/trips/#{@trip1.id}")

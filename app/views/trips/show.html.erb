@@ -18,6 +18,6 @@
   <h2>Other Trips to this Destination:</h2>
   <section class = "similar-trips">
     <% @trip.similar_trips.each do |trip| %>
-        <p><%= link_to trip.title, "/trips/#{trip.id}" %></p>
+        <p><%= link_to trip.title, trip_path(trip.id) %></p>
     <% end %>
   </section>

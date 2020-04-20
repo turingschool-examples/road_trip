@@ -19,7 +19,7 @@ RSpec.describe "As a visitor", type: :feature do
       @trip4.travelers << [@traveler4]
     end
     it "I see titles of all trips listed in order of their mileage (asc order)" do
-      visit "/trips"
+      visit trips_path
 
       within '.trips' do
         expect(page.all('.trip-info')[0]).to have_content("#{@trip2.title}")
