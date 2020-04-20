@@ -29,8 +29,14 @@ RSpec.describe "As a visitor", type: :feature do
       expect(current_path).to eq("/trips/#{@trip1.id}")
 
       expect(page).to have_content(@trip1.title)
-      expect(page).to have_content(@trip1.destination)
-      expect(page).to have_content(@trip1.mileage)
+      expect(page).to have_content("Destination: #{@trip1.destination}")
+      expect(page).to have_content("Mileage: #{@trip1.mileage}")
+
+      expect(page).to have_no_content(@trip2.title)
+      expect(page).to have_no_content(@trip3.title)
+      expect(page).to have_no_content(@trip4.title)
+      expect(page).to have_no_content(@trip5.title)
+      expect(page).to have_no_content(@trip6.title)
 
       expect(page).to have_content(@traveler1.name)
       expect(page).to have_content(@traveler2.name)
