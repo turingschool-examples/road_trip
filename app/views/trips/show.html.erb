@@ -11,3 +11,10 @@
     </section>
   <% end %>
 </section>
+
+<section class="similar-trips">
+  <h3>Other Trips to this Destination</h3>
+  <% @trip.trips_with_same_destination.each do |trip| %>
+    <p><%= trip.title %></p>
+  <% end %>
+</section>
