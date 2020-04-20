@@ -3,4 +3,7 @@ Rails.application.routes.draw do
   #trips
   get '/trips', to: 'trips#index'
   get '/trips/:trip_id', to: 'trips#show'
+
+  #traveler_trips
+  delete '/trips/:trip_id/travelers/:traveler_id', to: 'traveler_trips#destroy'
 end
