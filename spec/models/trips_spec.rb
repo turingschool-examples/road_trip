@@ -25,21 +25,20 @@ describe Trip, type: :model do
       expect(Trip.trips_by_mileage_ascending).to eq ([@trip_4, @trip_2, @trip_1, @trip_3])
     end
 
-    # it "trip.remove_traveler" do
-    #   traveler_1 = Traveler.create(  name: "Jack Straw",
-    #                                   age: 25)
-    #   traveler_2 = Traveler.create(  name: "Casey Jones",
-    #                                   age: 46)
-    #   trav_trip_1 = @trip_1.traveler_trips.create(traveler: traveler_1)
-    #   trav_trip_2 = @trip_1.traveler_trips.create(traveler: traveler_2)
-    #
-    #   expect(@trip_1.traveler_trips).to eq([trav_trip_1, trav_trip_2])
-    #   expect(@trip_1.travelers).to eq([traveler_1, traveler_2])
-    #
-    #   Trip.remove_traveler({id: "#{@trip_1.id}", traveler_id: "#{traveler_1.id}"})
-    #
-    #   expect(@trip_1.traveler_trips).to eq([trav_trip_2])
-    #   expect(@trip_1.travelers).to eq([traveler_2])
-    # end
+    it "trip.remove_traveler" do
+      traveler_1 = Traveler.create(  name: "Jack Straw",
+                                      age: 25)
+      traveler_2 = Traveler.create(  name: "Casey Jones",
+                                      age: 46)
+      trav_trip_1 = @trip_1.traveler_trips.create(traveler: traveler_1)
+      trav_trip_2 = @trip_1.traveler_trips.create(traveler: traveler_2)
+
+      expect(@trip_1.traveler_trips).to eq([trav_trip_1, trav_trip_2])
+      expect(@trip_1.travelers).to eq([traveler_1, traveler_2])
+      Trip.remove_traveler({id: "#{@trip_1.id}", traveler_id: "#{traveler_1.id}"})
+      @trip_1.reload
+      expect(@trip_1.traveler_trips).to eq([trav_trip_2])
+      expect(@trip_1.travelers).to eq([traveler_2])
+    end
   end
 end
