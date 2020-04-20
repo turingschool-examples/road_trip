@@ -32,6 +32,8 @@ describe Trip, type: :model do
     @trip_2 = Trip.create(title: "Who is America Anyway?", destination: "Washington, D.C.", mileage: 300)
     @trip_3 = Trip.create(title: "The Big Apple", destination: "New York City, NY", mileage: 850)
     @trip_4 = Trip.create(title: "Bike n’ Climb", destination: "Moab, UT", mileage: 700)
+    @trip_5 = Trip.create(title: "Broadway Hits", destination: "New York City, NY", mileage: 780)
+    @trip_6 = Trip.create(title: "Colonial History of NYC", destination: "New York City, NY", mileage: 1050)
 
     @traveler_1 = Traveler.create(name: "Tommy Tom", age: 46)
     @traveler_2 = Traveler.create(name: "Cory Cory", age: 19)
@@ -48,5 +50,10 @@ describe Trip, type: :model do
       @trip_1.reload
       expect(@trip_1.travelers).to eq([@traveler_1])
     end
+
+    it 'same_trip_destinations' do
+      expect(@trip_3.same_trip_destinations).to eq([@trip_5, @trip_6])
+    end
+    
   end
 end

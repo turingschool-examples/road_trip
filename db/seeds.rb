@@ -15,6 +15,9 @@
 @trip_2 = Trip.create!(title: "Who is America Anyway?", destination: "Washington, D.C.", mileage: 300)
 @trip_3 = Trip.create!(title: "The Big Apple", destination: "New York City, NY", mileage: 850)
 @trip_4 = Trip.create!(title: "Bike n’ Climb", destination: "Moab, UT", mileage: 700)
+@trip_5 = Trip.create(title: "Broadway Hits", destination: "New York City, NY", mileage: 780)
+@trip_6 = Trip.create(title: "Colonial History of NYC", destination: "New York City, NY", mileage: 1050)
+
 
 TravelerTrip.create!(trip: @trip_1, traveler: @traveler_1)
 TravelerTrip.create!(trip: @trip_1, traveler: @traveler_4)

@@ -14,4 +14,9 @@ class Trip < ApplicationRecord
     traveler_trip = traveler_trips.find_by(traveler_id: traveler.id)
     traveler_trip.destroy
   end
+
+  def same_trip_destinations
+    trips = Trip.where(destination: self.destination)
+                .where.not(id: self.id)
+  end
 end

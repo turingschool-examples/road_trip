@@ -8,6 +8,8 @@ RSpec.describe "as a visitor" do
       @trip_2 = Trip.create(title: "Who is America Anyway?", destination: "Washington, D.C.", mileage: 300)
       @trip_3 = Trip.create(title: "The Big Apple", destination: "New York City, NY", mileage: 850)
       @trip_4 = Trip.create(title: "Bike n’ Climb", destination: "Moab, UT", mileage: 700)
+      @trip_5 = Trip.create(title: "Broadway Hits", destination: "New York City, NY", mileage: 780)
+      @trip_6 = Trip.create(title: "Colonial History of NYC", destination: "New York City, NY", mileage: 1050)
 
       @traveler_1 = Traveler.create(name: "Tommy Tom", age: 46)
       @traveler_2 = Traveler.create(name: "Cory Cory", age: 19)
@@ -58,5 +60,15 @@ RSpec.describe "as a visitor" do
       expect(page).to have_content("Smith John has been removed from this trip")
       expect(page).to have_content(@traveler_1.name)
     end
+
+    it "When I visit a trips show page, I can see other trips to the same destination" do
+      visit "/trips/#{@trip_3.id}"
+
+      within "#trips-to-same-city" do
+        expect(page).to have_content(@trip_5.title)
+        expect(page).to have_content(@trip_6.title)
+        expect(page).to_not have_content(@trip_3.title)
+      end
+    end   
   end
 end

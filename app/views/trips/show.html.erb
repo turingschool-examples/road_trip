@@ -10,3 +10,10 @@
     <%= link_to "Remove This Traveler", "/trips/#{@trip.id}/#{traveler.id}", method: :delete %>
   </section>
 <% end %>
+
+<section id = "trips-to-same-city">
+<h2> Other Trips to This Destination: </h2>
+  <% @trip.same_trip_destinations.each do |trip| %>
+    <%=link_to trip.title, "/trips/#{trip.id}" %><br>
+  <% end %>
+</section>
