@@ -1,7 +1,5 @@
 <h1> All Trips </h1>
 
-  <% @trips.each do |trip| %>
-    <h4> Name: <%= trip.title %></h4>
-    <h4> Destination City: <%= trip.destination_city %></h4>
-    <h4> Mileage: <%= trip.mileage %></h4>
+  <% @trips.each do |trip| %><br/><br/>
+    <%= link_to "#{trip.title}", "/trips/#{trip.id}" %>
   <% end %>

@@ -12,17 +12,9 @@ RSpec.describe "when I visit the trips index page" do
 
     visit "/trips"
 
-    expect(page).to have_content("#{@trip_1.title}")
-    expect(page).to have_content("#{@trip_1.destination_city}")
-    expect(page).to have_content("#{@trip_1.mileage}")
-
-    expect(page).to have_content("#{@trip_2.title}")
-    expect(page).to have_content("#{@trip_2.destination_city}")
-    expect(page).to have_content("#{@trip_2.mileage}")
-
-    expect(page).to have_content("#{@trip_3.title}")
-    expect(page).to have_content("#{@trip_3.destination_city}")
-    expect(page).to have_content("#{@trip_3.mileage}")
+    expect(page).to have_link("#{@trip_1.title}")
+    expect(page).to have_link("#{@trip_2.title}")
+    expect(page).to have_link("#{@trip_3.title}")
 
     save_and_open_page
   end

@@ -57,7 +57,6 @@ And I can see that trips title, destination city, mileage
 And I also see a list of the names of the travelers that are on this trip
 ```
 
-
 ```
 User Story 3, Remove a Traveler from a Trip
 ​
