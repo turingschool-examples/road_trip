@@ -2,6 +2,8 @@
 
 <h3><ol>
   <% @trips.each do |trip| %>
-    <li><%= trip.title %> - <%= trip.mileage %> miles</li>
+    <li>
+      <%= link_to trip.title, trip_path(trip) %> - <%= trip.mileage %> miles
+    </li>
   <% end %>
 </ol></h3>
