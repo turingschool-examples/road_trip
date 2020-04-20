@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe "trips index page", type: :feature do
-  describe "as a visitor, when i visit a trips index page" do
-    context "and i click on a trip's title, i'm taken to that trip's show page" do
-      context "and i can see that trip's title, destination_city, and mileage" do
-        it "and i see a list of the names of travelers that are on this trip" do
+RSpec.describe "trips index page remove traveler", type: :feature do
+  describe "as a visitor, when i visit a trip's show page" do
+    context "and i click on 'Remove' next to a traveler's name" do
+      context "i am redirected back to the show page" do
+        it "and that traveler is no longer listed on that page" do
 
           trip1 = Trip.create(
             title: "Cheese Tour 2020",
@@ -38,21 +38,20 @@ RSpec.describe "trips index page", type: :feature do
           trip2.travelers << traveler1
           trip3.travelers << traveler3
 
-          visit '/trips'
+          visit("/trips/#{trip1.id}")
 
-          expect(page).to have_link("#{trip2.title}")
-          expect(page).to have_link("#{trip4.title}")
-          expect(page).to have_link("#{trip3.title}")
-          expect(page).to have_link("#{trip1.title}")
-
-          click_link("#{trip1.title}")
-
-          expect(current_path).to eq("/trips/#{trip1.id}")
-          expect(page).to have_content("#{trip1.title}")
-          expect(page).to have_content("#{trip1.destination_city}")
-          expect(page).to have_content("#{trip1.mileage}")
           expect(page).to have_content("#{traveler2.name}")
           expect(page).to have_content("#{traveler4.name}")
+          expect(page).to have_content("#{traveler5.name}")
+          expect(page).to_not have_content("#{traveler1.name}")
+          expect(page).to_not have_content("#{traveler3.name}")
+
+          within "#traveler-#{traveler4.id}" do
+            click_link('Remove')
+          end
+
+          expect(page).to have_content("#{traveler2.name}")
+          expect(page).to_not have_content("#{traveler4.name}")
           expect(page).to have_content("#{traveler5.name}")
           expect(page).to_not have_content("#{traveler1.name}")
           expect(page).to_not have_content("#{traveler3.name}")
