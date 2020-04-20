@@ -6,7 +6,7 @@ RSpec.describe "when I visit a trip's show page" do
     @trip_1 = Trip.create(title: "Cheese Tour 2020", destination_city: "Madison, WI", mileage: 1110)
     @trip_2 = Trip.create(title: "America Anyway?", destination_city: "Washington D.C.", mileage: 300)
     @trip_3 = Trip.create(title: "The Big Apple", destination_city: "New York City, NY", mileage: 850)
-    @trip_4 = Trip.create(title: "D.C. Awareness Tour", destination_city: "Washington D.C", mileage: 700)
+    @trip_4 = Trip.create(title: "D.C. Awareness Tour", destination_city: "Washington D.C.", mileage: 700)
 
     @traveler_1 = @trip_1.travelers.create(name: "Sally Sue", age: 25)
     @traveler_2 = @trip_1.travelers.create(name: "Tommy Tom", age: 46)
@@ -36,17 +36,9 @@ RSpec.describe "when I visit a trip's show page" do
 
   it "shows links to other trips going to the same destination" do
 
-    visit "/trips/#{@trip_1.id}"
+    visit "/trips/#{@trip_2.id}"
 
-    save_and_open_page
-
-    expect(page).to have_content("D.C. Awareness Tour")
-    expect(page).to have_content("Cheese Tour 2020")
+    expect(page).to have_link("D.C. Awareness Tour")
+    expect(page).to_not have_link("Cheese Tour 2020")
   end
 end
-
-# As a visitor
-# When I visit a trips show page
-# I see a section on the page titled, “Other Trips to this Destination”
-# And under that title I see a list of trip titles that have the same destination as this trip, but this should not include the trip who’s show page I’m on
-# And all of those titles are links to that trips show page

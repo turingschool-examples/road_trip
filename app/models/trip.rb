@@ -6,7 +6,7 @@ class Trip < ApplicationRecord
   has_many :travelers, through: :trip_travelers
 
   def similar_trips
-    require "pry"; binding.pry
-    @similar_trips = Trip.find_by(destination_city: "#{@trip.destination_city}")
+    trip = Trip.find(id)
+    same_city_trips = Trip.where(destination_city: "#{trip.destination_city}").distinct    
   end
 end
