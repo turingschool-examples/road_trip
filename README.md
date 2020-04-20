@@ -32,7 +32,7 @@ Road Trip is an application that will track road trips as well as travelers. Roa
 <!-- 1. Create the tables for travelers and trips. You do not need to do validation testing. -->
 
 ​
-2. Set up a many to many relationship between travelers and trips
+<!-- 2. Set up a many to many relationship between travelers and trips -->
 ​
 ​
 3. Complete the following user stories (we would like to see you at least start on user story 4):
