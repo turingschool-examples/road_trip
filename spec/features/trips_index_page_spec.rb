@@ -42,8 +42,6 @@ RSpec.describe "As a visitor", type: :feature do
         expect(page).to have_content(@trip4.title)
       end
     end
-
-    it
   end
 end
 
