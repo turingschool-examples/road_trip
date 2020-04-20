@@ -5,13 +5,13 @@ RSpec.describe "As a visitor" do
     trip = Trip.create(title: "Cheese Tour 2020", destination: "Madison, WI", mileage: 1100)
     traveler = trip.travelers.create(name: "Sally Sue", age: 25)
 
-    visit "/trips/#{trip.id}"
+    visit trip_path(trip)
 
     within("#traveler-#{traveler.id}") do
       click_button("Remove Traveler")
     end
 
-    expect(current_path).to eq("/trips/#{trip.id}")
+    expect(current_path).to eq(trip_path(trip))
     expect(page).to have_no_content(traveler.name)
   end
 end
