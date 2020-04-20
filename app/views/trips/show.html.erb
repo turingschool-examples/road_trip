@@ -10,6 +10,8 @@
     <% end %>
     <h4>Trips To The Same Destination: </h4>
       <% @trip.similar_trips.each do |trip| %>
+      <% if trip != @trip %>
         <p><%= link_to "#{trip.title}", "trips/#{trip.id}" %></p>
+        <% end %>
         <% end %>
   </section>
