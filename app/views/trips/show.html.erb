@@ -2,3 +2,13 @@
 <p>Destination City: <%= @trip.destination_city %></p>
 <p>Mileage: <%= @trip.mileage %></p>
 <p>Travelers on this trip: <%= @trip.travelers_on_trip.to_sentence%></p>
+
+<section class="remove-travelers">
+  <h3>Remove Travelers:</h3>
+  <% @trip.travelers.each do |traveler| %>
+    <div class="traveler-<%= traveler.id %>">
+      <%= traveler.name %> <%= button_to "Remove Traveler", "/trip_travelers/#{@trip.id}/#{traveler.id}", method: :delete %>
+    </div>
+  <% end %>
+
+</section>
