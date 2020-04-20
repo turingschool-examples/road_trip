@@ -6,6 +6,7 @@ RSpec.describe "As a visitor when I visit a trips index page" do
     @trip2 = Trip.create!(title: "Who is America Anyway?", city: "Washington, D.C.", mileage: 300)
     @trip3 = Trip.create!(title: "The Big Apple", city: "New York City, NY", mileage: 850)
     @trip4 = Trip.create!(title: "Bike n’ Climb", city: "Moab, UT", mileage: 700)
+    @trip5 = Trip.create!(title: "Arches", city: "Moab, UT", mileage: 900)
 
     @traveler1 = Traveler.create!(name: "Sally Sue", age: 25)
     @traveler2 = Traveler.create!(name: "Tommy Tom", age: 46)
@@ -61,5 +62,17 @@ RSpec.describe "As a visitor when I visit a trips index page" do
 
     expect(current_path).to eq("/trips/#{@trip1.id}")
     expect(page).to_not have_content(@traveler1.name)
+  end
+
+  it "I can see a list of other tirps that have the same destination" do
+    visit '/trips'
+
+    click_link @trip4.title
+
+    expect(page).to have_content("Other Trips to this Destination")
+    within("#other-similar-trips") do
+      expect(page).to have_link @trip5.title
+      expect(page).to_not have_link @trip4.title
+    end
   end
 end
