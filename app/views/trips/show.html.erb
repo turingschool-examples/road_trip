@@ -6,7 +6,7 @@
 <% @trip.travelers.each do |traveler| %>
   <section id="traveler-<%= traveler.id %>"
     <p><%= traveler.name %></p>
-    <%= button_to "Remove", trip_path(@trip, traveler_id: "#{traveler.id}"), method: :patch %>
+    <%= button_to "Remove", trip_path(@trip, traveler_id: traveler.id), method: :patch %>
   </section>
 <% end %>
 
