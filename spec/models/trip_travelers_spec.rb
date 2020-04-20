@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 describe TripTraveler, type: :model do
-  # describe "validations" do
-  #   it { should validate_presence_of :FIELD }
-  # end
+  describe "validations" do
+    it { should validate_presence_of :trip_id }
+    it { should validate_presence_of :traveler_id }
+  end
 
   describe 'relationships' do
     it { should belong_to :trip }
