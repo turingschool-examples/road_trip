@@ -2,6 +2,6 @@
 
 <% @trips.each do |trip| %>
   <seciton class="trips">
-    <%= trip.title %></br>
+    <%= link_to trip.title, trip_path(trip.id) %></br>
   </seciton>
 <% end %>
