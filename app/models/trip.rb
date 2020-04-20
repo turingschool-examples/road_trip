@@ -6,6 +6,10 @@ class Trip < ApplicationRecord
                         :destination_city,
                         :mileage
 
+  def self.sorted_trips
+    Trip.order(:mileage)
+  end
+
   def similar_trips
     Trip
       .where(
