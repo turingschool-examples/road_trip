@@ -33,18 +33,10 @@ RSpec.describe "When I visit a trips show page as a visitor", type: :feature do
       click_button "Remove Traveler"
     end
 
+
     expect(page).not_to have_content(@traveler1.name)
     expect(page).to have_content(@traveler2.name)
   
   end
 
 end
-
-
-#   As a visitor
-# When I visit a trips show page
-# Next to each traveler’s name
-# I see a button to remove that traveler from the trip
-# When I click that button for a particular traveler
-# I am redirected back to the trips show page
-# And I no longer see that traveler’s name listed

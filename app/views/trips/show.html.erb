@@ -4,5 +4,8 @@
 
 <h2>Travelers on this trip</h2>
 <% @trip.travelers.each do |traveler| %>
-  <p><%= traveler.name %></p>
+  <section id="traveler-<%=traveler.id%>" >
+    <p><%= traveler.name %></p>
+    <%= button_to "Remove Traveler", "/traveler/#{traveler.id}/trips/#{@trip.id}", method: :delete %>
+  </section>
 <% end %>

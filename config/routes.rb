@@ -4,10 +4,9 @@ Rails.application.routes.draw do
   # namespace :travelers do
   #   resources :trips
   # end
-  get 'trips/:id', to: 'trips#show'
+  get '/trips/:id', to: 'trips#show'
 
-  get 'traveler/:id/trips', to: 'trips#index'
+  get '/traveler/:id/trips', to: 'trips#index'
   # get 'traveler/:id/trips/:trip_id', to: 'trips#show'
-
-
+  delete '/traveler/:id/trips/:trip_id', to: 'trips#remove_traveler'
 end
