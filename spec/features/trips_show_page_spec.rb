@@ -37,7 +37,6 @@ RSpec.describe "As a visitor", type: :feature do
     TravelerTrip.create(traveler: @traveler2, trip: @trip1)
     TravelerTrip.create(traveler: @traveler3, trip: @trip1)
 
-    visit "/trips"
   end
 
   describe "when I visit a trips index page" do
@@ -46,6 +45,8 @@ RSpec.describe "As a visitor", type: :feature do
     I’m taken to that trip’s show page
     And I can see that trips title, destination city, mileage
     And I also see a list of the names of the travelers that are on this trip" do
+      visit "/trips"
+
       within "#trip-#{@trip1.id}" do
         click_link @trip1.title
       end
@@ -65,6 +66,25 @@ RSpec.describe "As a visitor", type: :feature do
       within "#traveler-#{@traveler3.id}" do
         expect(page).to have_content(@traveler3.name)
       end
+    end
+  end
+
+  describe "When I visit a trip's show page" do
+    it "Next to each traveler’s name
+    I see a button to remove that traveler from the trip
+    When I click that button for a particular traveler
+    I am redirected back to the trips show page
+    And I no longer see that traveler’s name listed" do
+
+      visit "/trips/#{@trip1.id}"
+
+      within "#traveler-#{@traveler1.id}" do
+        click_button "Remove Traveler"
+      end
+
+      expect(page).to have_current_path("/trips")
+
+      expect(page).to_not have_content(@traveler1.name)
     end
   end
 end
