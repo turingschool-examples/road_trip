@@ -1,0 +1,7 @@
+<h1>Trip Index</h1>
+
+<% @trips.each do |trip| %>
+    <p>Title: <%= trip.name %></p>
+    <p>Destination: <%= trip.destination %></p>
+    <p>Mileage: <%= trip.mileage %></p>
+<% end %>
