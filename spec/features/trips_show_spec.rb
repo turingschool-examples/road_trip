@@ -30,11 +30,6 @@ RSpec.describe "when I visit the trip show page and click the name of a trip" do
   end
 
   it "I am taken to the trips show page" do
-    # As a visitor
-    # When I visit a trips index page
-    # And I click on a trips title
-    # I’m taken to that trip’s show page
-    # And I can see that trips title, destination city, mileage
     visit "/trips"
 
     click_link("Cheese Tour 2020")
@@ -53,5 +48,20 @@ RSpec.describe "when I visit the trip show page and click the name of a trip" do
     expect(page).to have_content("Travelers on this trip: Sally Sue, Tommy Tom, and Smith John")
     expect(page).to_not have_content("#{@traveler_3.name}")
     expect(page).to_not have_content("#{@traveler_4.name}")
+  end
+
+  it "I also see a button to remove a traveler from a trip" do
+
+    visit "/trips/#{@trip_1.id}"
+
+    within ".traveler-#{@traveler_1.id}" do
+      click_button "Remove Traveler"
+    end
+
+    expect(current_path).to eq("/trips/#{@trip_1.id}")
+
+    expect(page).to have_content("Travelers on this trip: Tommy Tom, and Smith John")
+    expect(page).to_not have_content("Sally Sue")
+
   end
 end
