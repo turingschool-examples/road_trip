@@ -1,0 +1,9 @@
+<%= @trip.title %>
+<%= @trip.destination_city %>
+<%= @trip.mileage %>
+
+<% @trip.travelers.each do |traveler| %>
+  <section id="traveler-<%= traveler.id %>">
+    <%= traveler.name %>
+  </section>
+<% end %>
