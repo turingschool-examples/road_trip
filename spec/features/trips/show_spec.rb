@@ -37,11 +37,11 @@ RSpec.describe "As a visitor", type: :feature do
     visit trip_path(@trip_1)
 
     within "#traveler-#{@traveler_1.id}" do
-      expect(page).to have_link("Remove")
+      expect(page).to have_button("Remove")
     end
 
     within "#traveler-#{@traveler_2.id}" do
-      click_link "Remove"
+      click_button "Remove"
     end
 
     expect(current_path).to eq(trip_path(@trip_1))
