@@ -32,4 +32,22 @@ RSpec.describe Trip, type: :model do
     end
   end
 
+  describe "Class Methods" do
+    before :each do
+      @trip_1 = Trip.create!(title: "Cheese Tour 2020", destination_city: "Madison, WI", mileage: 1100)
+      @trip_2 = Trip.create!(title: "That 70's Tour", destination_city: "Madison, WI", mileage: 300)
+      @trip_3 = Trip.create!(title: "Great Lakes Vista", destination_city: "Madison, WI", mileage: 800)
+      @trip_4 = Trip.create!(title: "Frigid Heights", destination_city: "Madison, WI", mileage: 750)
+      @trip_5 = Trip.create!(title: "Who is America Anyway?", destination_city: "Washington, D.C.", mileage: 350)
+      @trip_6 = Trip.create!(title: "The Big Apple", destination_city: "New York City, NY", mileage: 850)
+      @trip_7 = Trip.create!(title: "Bike n’ Climb", destination_city: "Moab, UT", mileage: 700)
+    end
+
+    it "#sorted_trips" do
+      sorted_trips = [@trip_2, @trip_5, @trip_7, @trip_4, @trip_3, @trip_6, @trip_1]
+
+      expect(Trip.sorted_trips).to eq(sorted_trips)
+    end
+  end
+
 end
