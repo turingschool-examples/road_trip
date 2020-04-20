@@ -8,7 +8,10 @@
 <ul>
 <% @trip.travelers.each do |traveler| %>
     <li>
+    <section id="traveler-<%= traveler.id %>">
       <%= traveler.name %>
+      <%= button_to 'Remove Traveler', "/trips/#{@trip.id}/#{traveler.id}", method: :delete %>
+    </section>
     </li>
 <% end %>
 </ul>
