@@ -3,7 +3,7 @@
 <ol>
 <% @trips.order(:mileage).each do |trip| %>
     <li>
-  <%= trip.title %>
+  <%= link_to "#{trip.title}", "/trips/#{trip.id}" %>
     </li>
 <% end %>
 </ol>
