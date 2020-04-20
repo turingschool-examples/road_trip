@@ -53,19 +53,32 @@ RSpec.describe "as a visitor", type: :feature do
       expect(page).to have_content(@molly.name)
       expect(page).to have_content(@catherine.name)
     end
+  end
+
+  it "can see other trips to the same destination from a trips show page" do
+    trip5 = Trip.create(title: "Tour de Canyons", destination_city: "Moab UT", mileage: 400)
+    trip6 = Trip.create(title: "Cacti Cruise", destination_city: "Moab UT", mileage: 500)
+
+    visit "/trips/#{@trip4.id}"
+    expect(page).to have_content("Other Trips to this Destination")
     save_and_open_page
+    within ".similar_trips" do
+      expect(page).to have_link("#{trip5.title}")
+      expect(page).to have_link("#{trip6.title}")
+      expect(page).to_not have_link("#{@trip4.title}")
+      expect(page).to_not have_link("#{@trip3.title}")
+      click_link("#{trip5.title}")
+    end
+    expect(current_path).to eq("/trips/#{trip5.id}")
   end
 
 end
 
-#
-#
-# User Story 3, Remove a Traveler from a Trip
+
+
 #
 # As a visitor
 # When I visit a trips show page
-# Next to each traveler’s name
-# I see a button to remove that traveler from the trip
-# When I click that button for a particular traveler
-# I am redirected back to the trips show page
-# And I no longer see that traveler’s name listed
+# I see a section on the page titled, “Other Trips to this Destination”
+# And under that title I see a list of trip titles that have the same destination as this trip, but this should not include the trip who’s show page I’m on
+# And all of those titles are links to that trips show page
