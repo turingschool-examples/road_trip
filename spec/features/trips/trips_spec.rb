@@ -61,7 +61,6 @@ RSpec.describe "as a visitor", type: :feature do
 
     visit "/trips/#{@trip4.id}"
     expect(page).to have_content("Other Trips to this Destination")
-    save_and_open_page
     within ".similar_trips" do
       expect(page).to have_link("#{trip5.title}")
       expect(page).to have_link("#{trip6.title}")
@@ -73,12 +72,3 @@ RSpec.describe "as a visitor", type: :feature do
   end
 
 end
-
-
-
-#
-# As a visitor
-# When I visit a trips show page
-# I see a section on the page titled, “Other Trips to this Destination”
-# And under that title I see a list of trip titles that have the same destination as this trip, but this should not include the trip who’s show page I’m on
-# And all of those titles are links to that trips show page
