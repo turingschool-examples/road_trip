@@ -7,4 +7,5 @@
 <h3>Travelers</h3>
 <%@trip.travelers.each do |traveler|%>
   <p><%=traveler.name%></p>
+  <%= link_to "Remove #{traveler.name} From Trip", "/trips/#{@trip.id}/travelers/#{traveler.id}", method: :delete%>
 <%end%>
