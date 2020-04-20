@@ -10,24 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200420150815) do
+ActiveRecord::Schema.define(version: 20200420155728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "road_trip_travelers", force: :cascade do |t|
-    t.bigint "road_trip_id"
+    t.bigint "trip_id"
     t.bigint "traveler_id"
-    t.index ["road_trip_id"], name: "index_road_trip_travelers_on_road_trip_id"
     t.index ["traveler_id"], name: "index_road_trip_travelers_on_traveler_id"
-  end
-
-  create_table "road_trips", force: :cascade do |t|
-    t.string "title"
-    t.string "destination"
-    t.integer "mileage"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_road_trip_travelers_on_trip_id"
   end
 
   create_table "travelers", force: :cascade do |t|
@@ -37,6 +29,14 @@ ActiveRecord::Schema.define(version: 20200420150815) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "road_trip_travelers", "road_trips"
+  create_table "trips", force: :cascade do |t|
+    t.string "title"
+    t.string "destination"
+    t.integer "mileage"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "road_trip_travelers", "travelers"
+  add_foreign_key "road_trip_travelers", "trips"
 end
