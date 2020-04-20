@@ -5,11 +5,15 @@
 <h2>Travelers on this trip</h2>
 <section class = "travelers">
   <ul>
-  <%@trip.travelers.each do |traveler| %>
-  <div class = "traveler-<%=traveler.id%>"
-    <li> <%=traveler.name %> </li>
-    <%= link_to "Remove from Trip", "/trips/#{@trip.id}/#{traveler.id}", method: :patch%>
-  <% end %>
+  <% if @trip.travelers != [] %>
+      <%@trip.travelers.each do |traveler| %>
+          <div class = "traveler-<%=traveler.id%>"
+          <li> <%=traveler.name %> </li>
+          <%= link_to "Remove from Trip", "/trips/#{@trip.id}/#{traveler.id}", method: :patch%>
+        <% end %>
+      <%else %>
+      <p>No travelers currently on this trip</p>
+      <%end%>
   </ul>
 </section>
 
@@ -22,6 +26,6 @@
         <%end%>
       </ul>
       <% else %>
-        <p>No other trips to this destination"</p>
+        <p>No other trips to this destination</p>
       <%end%>
 </section>
