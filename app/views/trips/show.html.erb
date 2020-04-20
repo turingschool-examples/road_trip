@@ -15,3 +15,13 @@
     </li>
 <% end %>
 </ul>
+
+<h3>Other Trips to this Destination</h3>
+
+<% @trips.each do |same_trip| %>
+  <% if @trip.destination_city == same_trip.destination_city %>
+    <% if @trip.title != same_trip.title %>
+      <p><%= link_to "#{same_trip.title}", "/trips/#{same_trip.id}" %></p>
+    <% end %>
+  <% end %>
+<% end %>
