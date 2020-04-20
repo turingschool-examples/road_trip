@@ -4,5 +4,8 @@
 
 <p>Travelers On This Trip:</p>
 <% @trip.travelers.each do |traveler| %>
-  <p><%= traveler.name %></p>
+  <section id="traveler-<%= traveler.id %>"
+    <p><%= traveler.name %></p>
+    <%= link_to "Remove", trip_path(@trip, traveler_id: "#{traveler.id}"), method: :patch %>
+  </section>
 <% end %>
