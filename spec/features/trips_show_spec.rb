@@ -26,7 +26,6 @@ RSpec.describe "when I visit the trip show page and click the name of a trip" do
     TripTraveler.create(trip_id: @trip_3.id, traveler_id: @traveler_5.id)
 
     TripTraveler.create(trip_id: @trip_4.id, traveler_id: @traveler_4.id)
-
   end
 
   it "I am taken to the trips show page" do
