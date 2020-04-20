@@ -28,4 +28,42 @@ RSpec.describe "As a visitor when I visit the trip show" do
     expect(page).to_not have_content(traveler3.name)
   end
 
+  it 'I see a button next to each traveler to remove them from the trip' do
+    trip1 = Trip.create!( title: "Cheese Tour 2020", destination: "Madison, WI", mileage: 1100)
+
+    traveler1 = Traveler.create!(name: "Sally Sue", age: 25)
+    traveler2 = Traveler.create!(name: "Tommy Tom", age: 25)
+
+    TravelerTrip.create!(trip: trip1, traveler: traveler1)
+    TravelerTrip.create!(trip: trip1, traveler: traveler2)
+
+    visit "/trips/#{trip1.id}"
+
+    within ("#traveler-#{traveler1.id}") do
+      click_button 'Remove Traveler'
+    end 
+    within ("#traveler-#{traveler2.id}") do
+      click_button 'Remove Traveler'
+    end 
+  end
+
+  it 'I when I click remove traveler, I am returned to the show page and no longer see that traveler' do
+    trip1 = Trip.create!( title: "Cheese Tour 2020", destination: "Madison, WI", mileage: 1100)
+
+    traveler1 = Traveler.create!(name: "Sally Sue", age: 25)
+    traveler2 = Traveler.create!(name: "Tommy Tom", age: 25)
+
+    TravelerTrip.create!(trip: trip1, traveler: traveler1)
+    TravelerTrip.create!(trip: trip1, traveler: traveler2)
+
+    visit "/trips/#{trip1.id}"
+    
+    within ("#traveler-#{traveler1.id}") do
+      click_button 'Remove Traveler'
+    end 
+    expect(current_path).to eq("/trips/#{trip1.id}")
+
+    expect(page).to_not have_content("Sally Sue")
+  end
+
 end
