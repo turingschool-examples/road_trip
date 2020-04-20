@@ -9,7 +9,7 @@ RSpec.describe "as a visitor" do
       trip4 = Trip.create(title: "Bike n’ Climb", destination: "Moab, UT", mileage: 700)
 
       visit '/trips'
-save_and_open_page
+
       within "#Trip-#{trip1.id}" do
         expect(page).to have_content("#{trip1.title}")
       end
@@ -25,6 +25,18 @@ save_and_open_page
       within "#Trip-#{trip4.id}" do
         expect(page).to have_content("#{trip4.title}")
       end
+    end
+    it "has a link on each trips name that takes me to that trips show page" do
+      trip1 = Trip.create(title: "Cheese Tour 2020", destination: "Madison, WI", mileage: 1100)
+      trip2 = Trip.create(title: "Who is America Anyway?", destination: "Washington, D.C.", mileage: 300)
+      trip3 = Trip.create(title: "The Big Apple", destination: "New York City, NY", mileage: 850)
+      trip4 = Trip.create(title: "Bike n’ Climb", destination: "Moab, UT", mileage: 700)
+
+      visit "/trips"
+      within "#Trip-#{trip1.id}" do
+        click_link "#{trip1.title}"
+      end
+      expect(current_path).to eq("/trips/#{trip1.id}")
     end
   end
 end

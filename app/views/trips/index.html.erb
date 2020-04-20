@@ -2,7 +2,7 @@
 <ol>
 <% @trips.each do |trip| %>
   <section id="Trip-<%=trip.id%>">
-    <li><%= trip.title %></li>
+    <li><%= link_to "#{trip.title}", "/trips/#{trip.id}" %></li>
   </section>
 <% end %>
 </ol>
