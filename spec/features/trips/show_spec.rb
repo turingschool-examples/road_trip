@@ -51,4 +51,34 @@ RSpec.describe "As a visitor", type: :feature do
     expect(page).to have_no_content(traveler2.name)
     expect(page).to have_content(traveler3.name)
   end
+
+  it "I can find similar trips" do
+
+    trip1 = Trip.create(title: "Cheese Tour 2020",
+                        destination_city: "Madison, WI",
+                        mileage: 1100)
+    trip2 = Trip.create(title: "Scary Houses",
+                        destination_city: "Madison, WI",
+                        mileage: 1100)
+
+    trip3 = Trip.create(title: "Gold Mines",
+                        destination_city: "Denver, CO",
+                        mileage: 8000)
+    trip4 = Trip.create(title: "Wind for days",
+                        destination_city: "Laramie, WY",
+                        mileage: 2135)
+    trip5 = Trip.create(title: "Cheese and Wine",
+                        destination_city: "Madison, WI",
+                        mileage: 1100)
+    visit "/trips/#{trip1.id}"
+
+    within("#similar-trips") do
+      expect(page).to have_link(trip2.title)
+      expect(page).to have_link(trip5.title)
+      expect(page).to have_no_content(trip1.title)
+      expect(page).to have_no_content(trip3.title)
+      expect(page).to have_no_content(trip4.title)
+    end
+
+  end
 end
