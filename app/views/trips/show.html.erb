@@ -6,6 +6,17 @@
   <section id = <%= "traveler_#{traveler.id}"%>>
     <p><%= traveler.name %></p>
     <%= button_to "Remove Traveler", "/trips/#{@trip.id}", method: :patch, params: {traveler_id: "#{traveler.id}"}  %>
-
   </section>
 <% end %>
+<br>
+<br>
+<section id = "other_trips">
+  <p>Other Trips to This Destination:</p>
+  <% if @trip.other_trips(@trip.destination_city, @trip.id) != [] %>
+    <% @trip.other_trips(@trip.destination_city, @trip.id).each do |trip| %>
+      <p><%= link_to trip.title, "/trips/#{trip.id}" %></p>
+    <% end %>
+  <% else %>
+    <p>No Other Trips to This Destination</p>
+  <% end %>
+</section>
