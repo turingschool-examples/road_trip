@@ -14,5 +14,8 @@
 
 <section class="other-trips">
   <h3>Other Trips to this Destination</h3>
+  <% @trip.similar_trips.each do |trip| %>
+    <%= link_to "#{trip.title}", "/trips/#{trip.id}" %>
+  <% end %>
 
 </section>
