@@ -58,7 +58,7 @@ And I also see a list of the names of the travelers that are on this trip
 ``` -->
 
 
-```
+<!-- ```
 User Story 3, Remove a Traveler from a Trip
 ​
 As a visitor
@@ -68,7 +68,7 @@ I see a button to remove that traveler from the trip
 When I click that button for a particular traveler
 I am redirected back to the trips show page
 And I no longer see that traveler’s name listed
-```
+``` -->
 
 Extension:
 
