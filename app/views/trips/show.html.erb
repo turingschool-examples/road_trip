@@ -1,10 +1,11 @@
 <section id = "trip-information">
-  <h1><%= @trip.title %></h1>
+  <h1><%= @trip.title %> Information</h1>
   <p>Destination: <%= @trip.destination %></p>
   <p>Mileage: <%= @trip.mileage %></p>
 </section>
 
 <section class = "travelers">
+  <h2>Travelers</h2>
   <ul>
     <% @trip.travelers.each do |traveler| %>
       <div id = "traveler-<%= traveler.id %>">
@@ -15,6 +16,7 @@
 </section>
 
 <section id = "similar-trips">
+  <h2>Similar Trips</h2>
   <ul>
     <% @trip.similar_trips.each do |trip| %>
       <li><%= link_to trip.title, trip_path(trip) %></li>

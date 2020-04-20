@@ -17,12 +17,13 @@ RSpec.describe "As a visitor" do
     visit "/trips/#{@trip1.id}"
 
     within('#trip-information') do
-      expect(page).to have_content(@trip1.title)
+      expect(page).to have_content("#{@trip1.title} Information")
       expect(page).to have_content("Destination: #{@trip1.destination}")
       expect(page).to have_content("Mileage: #{@trip1.mileage}")
     end
 
     within('.travelers') do
+      expect(page).to have_content("Travelers")
       within("#traveler-#{@traveler1.id}") do
         expect(page).to have_content(@traveler1.name)
         expect(page).to have_button("Remove Traveler")
@@ -41,6 +42,7 @@ RSpec.describe "As a visitor" do
     visit "/trips/#{@trip1.id}"
 
     within('#similar-trips') do
+      expect(page).to have_content("Similar Trips")
       expect(page).to have_no_content(@trip1.title)
       expect(page).to have_no_content(@trip2.title)
       expect(page).to have_link(@trip3.title, href: "/trips/#{@trip3.id}")
