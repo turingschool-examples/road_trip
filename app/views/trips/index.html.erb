@@ -1,0 +1,9 @@
+<h1>All Trips</h1>
+
+<section id = "trips">
+  <ul>
+    <% @trips.each do |trip| %>
+      <li><%= trip.title %></li>
+    <% end %>
+  </ul>
+</section>
