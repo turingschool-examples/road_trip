@@ -1,3 +1,4 @@
 <h1>Trip: <%= @trip.title %></h1>
 <p>Destination City: <%= @trip.destination_city %></p>
 <p>Mileage: <%= @trip.mileage %></p>
+<p>Travelers on this trip: <%= @trip.travelers_on_trip.to_sentence%></p>

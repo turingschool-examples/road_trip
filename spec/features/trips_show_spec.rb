@@ -7,25 +7,25 @@ RSpec.describe "when I visit the trip show page and click the name of a trip" do
     @trip_3 = Trip.create(title: "The Big Apple", destination_city: "New York City, NY", mileage: 850)
     @trip_4 = Trip.create(title: "Bike n’ Climb", destination_city: "Moab, UT", mileage: 700)
 
-#     Traveler1
-# name: “Sally Sue”
-# age: 25
-#
-# Traveler2
-# name: “Tommy Tom”
-# age: 46
-#
-# Traveler3
-# name: “Cory Cory”
-# age: 19
-#
-# Traveler4
-# name: “Mary Mae”
-# age: 44
-#
-# Traveler5
-# name: “Smith John”
-# age: 9
+    @traveler_1 = Traveler.create(name: "Sally Sue", age: 25)
+    @traveler_2 = Traveler.create(name: "Tommy Tom", age: 46)
+    @traveler_3 = Traveler.create(name: "Cory Cory", age: 19)
+    @traveler_4 = Traveler.create(name: "Mary Mae", age: 44)
+    @traveler_5 = Traveler.create(name: "Smith John", age: 9)
+
+    TripTraveler.create(trip_id: @trip_1.id, traveler_id: @traveler_1.id)
+    TripTraveler.create(trip_id: @trip_1.id, traveler_id: @traveler_2.id)
+    TripTraveler.create(trip_id: @trip_1.id, traveler_id: @traveler_5.id)
+
+    TripTraveler.create(trip_id: @trip_2.id, traveler_id: @traveler_3.id)
+    TripTraveler.create(trip_id: @trip_2.id, traveler_id: @traveler_5.id)
+
+    TripTraveler.create(trip_id: @trip_3.id, traveler_id: @traveler_1.id)
+    TripTraveler.create(trip_id: @trip_3.id, traveler_id: @traveler_2.id)
+    TripTraveler.create(trip_id: @trip_3.id, traveler_id: @traveler_3.id)
+    TripTraveler.create(trip_id: @trip_3.id, traveler_id: @traveler_5.id)
+
+    TripTraveler.create(trip_id: @trip_4.id, traveler_id: @traveler_4.id)
 
   end
 
@@ -47,7 +47,11 @@ RSpec.describe "when I visit the trip show page and click the name of a trip" do
   end
 
   it "I also see the names of the travellers listed on this trip" do
-    # And I also see a list of the names of the travelers that are on this trip
 
+    visit "/trips/#{@trip_1.id}"
+
+    expect(page).to have_content("Travelers on this trip: Sally Sue, Tommy Tom, and Smith John")
+    expect(page).to_not have_content("#{@traveler_3.name}")
+    expect(page).to_not have_content("#{@traveler_4.name}")
   end
 end
