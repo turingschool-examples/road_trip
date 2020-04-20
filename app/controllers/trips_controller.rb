@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
 
   def index
-    @trips = Trip.all.order("mileage ASC")
+    @trips = Trip.trips_by_mileage_ascending
   end
 
 end
