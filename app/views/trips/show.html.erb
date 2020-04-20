@@ -2,3 +2,9 @@
 <h2><%= @trip.title %></h2>
 <h3><%= @trip.destination_city %></h3>
 <h3><%= @trip.mileage %></h3>
+
+<section class="travelers-list">
+  <% @trip.travelers.each do |traveler| %>
+    <p><%= traveler.name %></p>
+  <% end %>
+</section>
