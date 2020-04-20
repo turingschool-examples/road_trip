@@ -34,5 +34,30 @@ RSpec.describe 'As a visitor' do
       expect(page).to have_content(@traveler2.name)
       expect(page).to have_content(@traveler3.name)
     end
+
+    it 'I see a button to remove that traveler next to each traveler’s name' do
+      visit "/trips/#{@trip1.id}"
+
+      within("#traveler-#{@traveler1.id}") do
+        click_link "Remove Traveler"
+      end
+
+      within("#traveler-#{@traveler2.id}") do
+        click_link "Remove Traveler"
+      end
+    end
+
+  context 'When I click the remove button for a traveler I am redirected back to the trips show page' do
+    it 'And I no longer see that traveler’s name listed' do
+      visit "/trips/#{@trip1.id}"
+
+      within("#traveler-#{@traveler2.id}") do
+        click_link "Remove Traveler"
+      end
+
+      expect(current_path).to eql("/trips/#{@trip1.id}")
+      expect(page).to have_no_css("#traveler-#{@traveler2.id}")
+    end
+   end
   end
 end
