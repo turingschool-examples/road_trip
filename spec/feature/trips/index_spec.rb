@@ -10,9 +10,9 @@ RSpec.describe "When I visit a trips index page", type: :feature do
   it "I see the titles of all trips in my database listed in order of their mileage (ascending order)" do
     visit "/trips"
 
-    expect(page.all(".trip_title")[0]).to eql("Who is America Anyway?")
-    expect(page.all(".trip_title")[1]).to eql("Bike n’ Climb")
-    expect(page.all(".trip_title")[2]).to eql("The Big Apple")
-    expect(page.all(".trip_title")[3]).to eql("Cheese Tour 2020")
+    expect(page.all(".trip_title")[0]).to have_content("Who is America Anyway?")
+    expect(page.all(".trip_title")[1]).to have_content("Bike n’ Climb")
+    expect(page.all(".trip_title")[2]).to have_content("The Big Apple")
+    expect(page.all(".trip_title")[3]).to have_content("Cheese Tour 2020")
   end
 end
