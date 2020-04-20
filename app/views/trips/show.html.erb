@@ -1,0 +1,21 @@
+<h1><%= @trip.title %> Information</h1>
+
+<section class="trip-info">
+  <p>Title: <%= @trip.title %></p>
+  <p>Destination: <%= @trip.destination %></p>
+  <p>Mileage: <%= @trip.mileage %></p>
+</section>
+<section id='current-travelers'>
+  <% @trip.travelers.each do |traveler| %>
+    <section id="current-traveler-<%= traveler.id %>">
+      <p><%= traveler.name %></p>
+      <%= button_to 'Delete', "/trips/#{@trip.id}/travelers/#{traveler.id}", method: :delete %>
+    </section>
+  <% end %>
+</section>
+
+<section class="similar-trips">
+    <% @trip.similar_trips.each do |similar_trip| %>
+      <p><%= similar_trip.title %></p>
+    <% end %>
+</section>

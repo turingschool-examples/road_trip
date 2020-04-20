@@ -1,0 +1,9 @@
+<h1>Trips Index</h1>
+
+<section class="user-trips">
+  <% @trips.each do |trip| %>
+    <section id="trip-<%= trip.id %>">
+      <p><%= link_to trip.title, "/trips/#{trip.id}" %> / Mileage: <%= trip.mileage %></p>
+    </section>
+  <% end %>
+</section>
