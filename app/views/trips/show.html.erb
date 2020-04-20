@@ -12,3 +12,16 @@
   <% end %>
   </ul>
 </section>
+
+<h2>Other Trips to this Destination</h2>
+<section class = "similar_trips">
+  <ul>
+    <% if @trip.similar_trips != [] %>
+        <% @trip.similar_trips.each do |trip| %>
+        <li> <%= link_to "#{trip.title}", "/trips/#{trip.id}" %></li>
+        <%end%>
+      </ul>
+      <% else %>
+        <p>No other trips to this destination"</p>
+      <%end%>
+</section>
