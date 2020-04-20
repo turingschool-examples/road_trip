@@ -3,7 +3,7 @@ class CreateTrips < ActiveRecord::Migration[5.1]
     create_table :trips do |t|
       t.string :title
       t.string :city
-      t.integer :milage
+      t.integer :mileage
     end
   end
 end

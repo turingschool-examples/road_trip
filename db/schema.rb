@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20200420152923) do
   create_table "trips", force: :cascade do |t|
     t.string "title"
     t.string "city"
-    t.integer "milage"
+    t.integer "mileage"
     t.bigint "travelers_id"
     t.index ["travelers_id"], name: "index_trips_on_travelers_id"
   end
