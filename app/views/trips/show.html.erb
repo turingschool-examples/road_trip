@@ -7,3 +7,12 @@
   <p><%=traveler.name%></p><%= button_to "Remove Traveler", "/trips/#{@trip.id}/travelers/#{traveler.id}", method: :delete %>
 </section>
 <% end %>
+
+<section class="other-trips">
+  <h3>Other Trips to this Destination:</h3>
+  <% @trip.same_destination_trips(@trip.destination).each do |trip|%>
+    <% if !(@trip.title == trip.title)%>
+      <p><%= trip.title %></p>
+    <% end %>
+   <% end %> 
+</section>
