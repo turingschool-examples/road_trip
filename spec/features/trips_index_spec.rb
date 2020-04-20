@@ -32,7 +32,3 @@ RSpec.describe "as a visitor when I visit the trips index page" do
 
   end
 end
-
-# As a visitor
-# When I visit a trips index page
-# I see the titles of all trips in my database listed in order of their mileage (ascending order)
