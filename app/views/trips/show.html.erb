@@ -8,8 +8,9 @@
 <h2>Travelers:</h2>
 <section class = "travelers">
   <% @trip.travelers.each do |traveler| %>
-    <section class = "traveler-info">
+    <section class = "traveler-info" id = "traveler-<%= traveler.id %>">
       <%= traveler.name %>
+      <%= button_to "Remove", "/travelers_trips/#{@trip.id}", params: { traveler: traveler.id }, method: :delete %>
     </section>
   <% end %>
 </section>
