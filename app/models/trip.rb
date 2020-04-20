@@ -3,5 +3,6 @@ class Trip < ApplicationRecord
                         :destination_city,
                         :mileage
 
-  has_many :travelers
+  has_many :trip_travelers
+  has_many :travelers, through: :trip_travelers
 end
