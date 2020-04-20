@@ -35,7 +35,7 @@ RSpec.describe 'As a visitor on the trip show page', type: :feature do
     end
   end
 
-  xit "I can click a button next to each trip traveler to remove them, and am redirected back to the trips show page" do
+  it "I can click a button next to each trip traveler to remove them, and am redirected back to the trips show page" do
     visit "/trips/#{@trip_1.id}"
 
     within "#current-traveler-#{@traveler_2.id}" do
@@ -45,7 +45,7 @@ RSpec.describe 'As a visitor on the trip show page', type: :feature do
     expect(current_path).to eql("/trips/#{@trip_1.id}")
 
     within '#current-travelers' do
-      expect(page).to have_no_css("#current-traveler-#{@traveler_2}")
+      expect(page).to have_no_css("#current-traveler-#{@traveler_2.id}")
     end
   end
 

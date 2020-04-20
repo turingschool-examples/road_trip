@@ -9,7 +9,7 @@
   <% @trip.travelers.each do |traveler| %>
     <section id="current-traveler-<%= traveler.id %>">
       <p><%= traveler.name %></p>
-      <%= button_to 'Delete', "/trips/#{@trip.id}/travelers/#{traveler.id}", method: :delete %>
+      <%= button_to 'Delete', "/trip/travelers/#{traveler.id}", method: :delete %>
     </section>
   <% end %>
 </section>
