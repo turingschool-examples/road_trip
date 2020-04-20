@@ -5,4 +5,8 @@ describe Traveler, type: :model do
     it {should have_many :traveler_trips}
     it {should have_many(:trips).through(:traveler_trips)}
   end
+  describe "validations" do
+    it { should validate_presence_of :name }
+    it { should validate_presence_of :age }
+  end
 end

@@ -19,6 +19,11 @@ describe Trip, type: :model do
     it {should have_many :traveler_trips}
     it {should have_many(:travelers).through(:traveler_trips)}
   end
+  describe "validations" do
+    it { should validate_presence_of :title }
+    it { should validate_presence_of :destination_city }
+    it { should validate_presence_of :mileage }
+  end
   describe "class methods" do
     it "trip.trips_by_mileage_ascending" do
       expect(Trip.trips_by_mileage_ascending).to eq ([@trip_4, @trip_2, @trip_1, @trip_3])
