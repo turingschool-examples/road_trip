@@ -9,8 +9,7 @@ class TripsController < ApplicationController
 
   def update
     trip = Trip.find(params[:id])
-    travler = Traveler.find(params[:traveler_id])
-    trip.travelers.destroy(travler)
+    trip.travelers.destroy(params[:traveler_id])
     redirect_to trip_path(trip)
   end
 end
