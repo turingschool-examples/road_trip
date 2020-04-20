@@ -20,10 +20,15 @@ RSpec.describe "As a visitor,", type: :feature do
         expect(page).to have_content(trip1.mileage)
       end
 
-      within ".trip-travelers" do 
+      within "#traveler-#{traveler1.id}" do 
         expect(page).to have_content(traveler1.name)
+      end
+
+      within "#traveler-#{traveler2.id}" do 
         expect(page).to have_content(traveler2.name)
       end
+
+      expect(page).to_not have_content(traveler3.name)
     end 
   end 
 end

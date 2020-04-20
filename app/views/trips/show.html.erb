@@ -8,9 +8,9 @@
 </section></br></br>
 
 
-<section class="trip-travelers">
-  Travelers on this trip:</br>
-  <% @trip.travelers.each do |traveler| %>
-    <%= traveler.name %></br>
-  <% end %>
-</section>
+Travelers on this trip:</br>
+<% @trip.travelers.each do |traveler| %>
+  <section id="traveler-<%= traveler.id %>">
+    <%= traveler.name %> <%= button_to "Delete Traveler", trip_path(@trip.id), method: :delete %></br>
+  </section>
+<% end %>
