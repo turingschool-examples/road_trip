@@ -46,4 +46,30 @@ RSpec.describe 'Trips show page' do
     expect(page).to have_current_path("/trips/#{@trip1.id}")
     expect(page).to_not have_content(@traveler1.name)
   end
+
+  it "has a section of the page that lists trips witht the same destination" do
+    trip2 = Trip.create(name: "Midwest College Tour", destination_city: "Madison, WI", mileage: 1100)
+    trip3 = Trip.create(name: "Badger Game Weekend", destination_city: "Madison, WI", mileage: 300)
+    trip4 = Trip.create(name: "Bar Crawl", destination_city: "Madison, WI", mileage: 1)
+    visit "/trips/#{@trip1.id}"
+
+    within "#similar-trips" do
+      expect(page).to have_content("Other Trips to this Destination")
+      expect(page).to have_link(trip2.name)
+      expect(page).to have_link(trip3.name)
+      expect(page).to have_link(trip4.name)
+      expect(page).to_not have_link(@trip1.name)
+
+      click_link(trip2.name)
+    end
+
+    expect(page).to have_current_path("/trips/#{trip2.id}")
+  end
+
+  it "says no similar trips if trip cannot find any trips with the same name" do
+    visit "/trips/#{@trip1.id}"
+    within "#similar-trips" do
+      expect(page).to have_content("No trips match this trip's destination")
+    end
+  end
 end
