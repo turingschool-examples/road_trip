@@ -54,6 +54,14 @@ RSpec.describe "when I visit the trip show page and click the name of a trip" do
 
     visit "/trips/#{@trip_1.id}"
 
+    within ".traveler-#{@traveler_2.id}" do
+      expect(page).to have_button("Remove Traveler")
+    end
+
+    within ".traveler-#{@traveler_5.id}" do
+      expect(page).to have_button("Remove Traveler")
+    end
+
     within ".traveler-#{@traveler_1.id}" do
       click_button "Remove Traveler"
     end
@@ -62,6 +70,7 @@ RSpec.describe "when I visit the trip show page and click the name of a trip" do
 
     expect(page).to have_content("Travelers on this trip: Tommy Tom and Smith John")
     expect(page).to_not have_content("Sally Sue")
+    expect(page).to_not have_css(".traveler-#{@traveler_1.id}")
 
     #the following test shows that the traveler is not deleted entirely
     #only removed from the trip
