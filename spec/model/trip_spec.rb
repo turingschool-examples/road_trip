@@ -14,8 +14,18 @@ RSpec.describe Trip, type: :model do
   end
 
   describe "Instance Methods" do
+    before(:each) do
+      @trip1 = Trip.create!(title: "Cheese Tour 2020", destination_city: "Madison, WI", mileage: 1100)
+      @trip2 = Trip.create!(title: "Who is America Anyway?", destination_city: "Washington, D.C.", mileage: 300)
+      @trip3 = Trip.create!(title: "Trip3 Title", destination_city: "Madison, WI", mileage: 300)
+      @trip4 = Trip.create!(title: "Trip4 Title", destination_city: "Madison, WI", mileage: 300)
+    end
 
+    it "#trips_with_same_destination" do
+      expect(@trip1.trips_with_same_destination).to contain_exactly(@trip3, @trip4)
+    end
   end
+
   describe "Class Methods" do
     before(:each) do
       @trip1 = Trip.create!(title: "Cheese Tour 2020", destination_city: "Madison, WI", mileage: 1100)
