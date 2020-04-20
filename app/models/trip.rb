@@ -10,4 +10,8 @@ class Trip < ApplicationRecord
   def travelers_on_trip
     travelers.pluck(:name)
   end
+
+  def similar_trips
+    Trip.where(destination_city: destination_city).where.not(id: id)
+  end
 end

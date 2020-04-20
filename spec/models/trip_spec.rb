@@ -36,5 +36,19 @@ RSpec.describe Trip, type: :model do
       expect(trip_1.travelers_on_trip).to include(traveler_2.name)
       expect(trip_1.travelers_on_trip).to_not include(traveler_3.name)
     end
+
+    it "similar_trips" do
+      trip_1 = Trip.create(title: "Cheese Tour 2020", destination_city: "Madison, WI", mileage: 1100)
+      trip_2 = Trip.create(title: "Who is America Anyway?", destination_city: "Washington, D.C", mileage: 300)
+      trip_3 = Trip.create(title: "The Big Apple", destination_city: "New York City, NY", mileage: 850)
+      trip_4 = Trip.create(title: "Bike n’ Climb", destination_city: "Moab, UT", mileage: 700)
+      trip_5 = Trip.create(title: "The land of over 14,000 lakes", destination_city: "Madison, WI", mileage: 450)
+      trip_6 = Trip.create(title: "A Winter Wonderland For Trout", destination_city: "Madison, WI", mileage: 175)
+
+      expect(trip_1.similar_trips).to include(trip_5)
+      expect(trip_1.similar_trips).to include(trip_6)
+      expect(trip_1.similar_trips).to_not include(trip_1)
+      expect(trip_1.similar_trips).to_not include(trip_2)
+    end
   end
 end

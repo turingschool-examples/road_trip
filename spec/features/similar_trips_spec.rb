@@ -13,7 +13,7 @@ RSpec.describe "similar trips" do
   end
 
   describe "I see a section of the page titled 'Other trips to this destination'" do
-    it "in this section I see all other trip titles that have the same destination as this trip" do
+    it "I see all other trip titles that have the same destination as this trip (not including the currrent trip)" do
 
       visit "/trips/#{@trip_1.id}"
 
@@ -29,8 +29,7 @@ RSpec.describe "similar trips" do
       end
     end
 
-    it "other trips to this destination should not include the current trip I am on" do
-    end
-
-    it "all the names of the similar trips are links to that trips show page"
+    # it "all the names of the similar trips are links to that trips show page" do
+    # end
+  end
 end
