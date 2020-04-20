@@ -1,10 +1,11 @@
 <h1><%= @trip.title %></h1>
 
 <section class = "trip-info">
-  <p><%= @trip.destination %></p>
-  <p><%= @trip.mileage %></p>
+  <p>Destination: <%= @trip.destination %></p>
+  <p>Mileage: <%= @trip.mileage %></p>
 </section>
 
+<h2>Travelers:</h2>
 <section class = "travelers">
   <% @trip.travelers.each do |traveler| %>
     <section class = "traveler-info">
