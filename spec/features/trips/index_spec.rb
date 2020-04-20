@@ -8,6 +8,7 @@ RSpec.describe "As a visitor" do
     trip4 = Trip.create(title: "Cheese n’ Climb", destination: "Madison, WI", mileage: 700)
 
     visit trips_path
+    
     within('#trips') do
       expect(page.all('li')[0]).to have_link("#{trip2.title} (#{trip2.mileage} miles)", href: trip_path(trip2))
       expect(page.all('li')[1]).to have_link("#{trip4.title} (#{trip4.mileage} miles)", href: trip_path(trip4))
