@@ -55,7 +55,7 @@ RSpec.describe 'As a visitor', type: :feature do
 
 #need to set destination_city within this test to have a set city to compare with
   # factory bot no bueno this assessment
-      within("similar-trips") do
-      end
+      # within("similar-trips") do
+      # end
   end
 end
