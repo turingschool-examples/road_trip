@@ -9,6 +9,6 @@
 <h3>Travelers on this Trip</h3>
 <ul>
   <% @trip.travelers.each do |traveler| %>
-  <li><%= traveler.name %></li>
+  <li id="traveler-<%= traveler.id %>"><%= traveler.name %> | <%= button_to "Delete #{traveler.name} from this Trip", "/trips/#{@trip.id}?traveler=#{traveler.id}", method: :delete %></li>
   <% end %>
 </ul>
