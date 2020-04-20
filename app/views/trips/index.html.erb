@@ -1,0 +1,22 @@
+<h1>Trips</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Destination city</th>
+      <th>Mileage</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @trips.mileage_sort.each do |trip| %>
+      <tr>
+        <td><%= link_to trip.title, "/trips/#{trip.id}" %></td>
+        <td><%= trip.destination_city %></td>
+        <td><%= trip.mileage %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
