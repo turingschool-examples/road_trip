@@ -7,7 +7,7 @@ RSpec.describe "AS a visitor,", type: :feature do
       trip2 = Trip.create!(title: "The Big Apple", city: "New York City, NY", mileage: 850)
       trip3 = Trip.create!(title: "Bike n’ Climb", city: "Moab, UT", mileage: 700)
       trip4 = Trip.create!(title: "Who is America Anyway?", city: "Washington, D.C.", mileage: 300)
-      
+ 
       visit trips_path
 
       expect(page.all('.trips')[0]).to have_content(trip4.title)

@@ -5,6 +5,8 @@ RSpec.describe Trip, type: :model do
     it {should validate_presence_of :title}
     it {should validate_presence_of :city}
     it {should validate_presence_of :mileage}
+    it {should have_many :traveler_trips}
+    it {should have_many(:travelers).through(:traveler_trips)}
   end 
 
   describe "class methods" do 
