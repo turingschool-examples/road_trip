@@ -33,7 +33,30 @@ RSpec.describe "as a visitor" do
       expect(page).to_not have_content(@trip_4.title)
       expect(page).to_not have_content(@traveler_3.name)
       expect(page).to_not have_content(@traveler_2.name)
+    end
 
+    it "has a link to remove each traveler from the trip" do
+      visit "/trips/#{@trip_1.id}"
+
+      within "#traveler-#{@traveler_1.id}" do
+        expect(page).to have_link("Remove This Traveler")
+      end
+
+      within "#traveler-#{@traveler_4.id}" do
+        expect(page).to have_link("Remove This Traveler")
+      end
+    end
+
+    it "I can remove a traveler from a trip" do
+      visit "/trips/#{@trip_1.id}"
+
+      within "#traveler-#{@traveler_4.id}" do
+        click_link "Remove This Traveler"
+      end
+
+      expect(current_path).to eq("/trips/#{@trip_1.id}")
+      expect(page).to have_content("Smith John has been removed from this trip")
+      expect(page).to have_content(@traveler_1.name)
     end
   end
 end

@@ -9,4 +9,9 @@ class Trip < ApplicationRecord
   def self.sorted_by_mileage
     order('mileage')
   end
+
+  def remove_traveler(traveler)
+    traveler_trip = traveler_trips.find_by(traveler_id: traveler.id)
+    traveler_trip.destroy
+  end
 end
