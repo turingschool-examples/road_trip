@@ -59,4 +59,18 @@ RSpec.describe "When I visit a trips show page", type: :feature do
     end
   end
 
+  it "I can click button to remove traveler, I am redirected back to show and no longer see traveler on list." do
+    visit "/trips/#{@trip1.id}"
+
+    within("#traveler-#{@traveler1.id}") do
+      click_button "Remove from Trip"
+    end
+
+    expect(current_path).to eql("/trips/#{@trip1.id}")
+
+    expect(page).to have_no_css("#traveler-#{@traveler1.id}")
+    expect(page).to have_css("#traveler-#{@traveler2.id}")
+    expect(page).to have_css("#traveler-#{@traveler3.id}")
+  end
+
 end
