@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe Trip, type: :model do
-
   describe 'Relationships' do
     it {should have_many :trip_travelers}
     it {should have_many(:travelers).through(:trip_travelers)}
@@ -49,5 +48,4 @@ RSpec.describe Trip, type: :model do
       expect(Trip.sorted_trips).to eq(sorted_trips)
     end
   end
-
 end

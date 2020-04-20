@@ -12,10 +12,7 @@ class Trip < ApplicationRecord
 
   def similar_trips
     Trip
-      .where(
-        destination_city: destination_city
-      )
+      .where(destination_city: destination_city)
       .where.not(id: id)
   end
-
 end

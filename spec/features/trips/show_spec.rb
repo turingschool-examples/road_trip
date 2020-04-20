@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe "As a visitor", type: :feature do
-
   before :each do
     @trip_1 = Trip.create!(title: "Cheese Tour 2020", destination_city: "Madison, WI", mileage: 1100)
     @trip_2 = Trip.create!(title: "That 70's Tour", destination_city: "Madison, WI", mileage: 300)
@@ -53,9 +52,8 @@ RSpec.describe "As a visitor", type: :feature do
     similar_trips = [@trip_2, @trip_3, @trip_4]
     visit trip_path(@trip_1)
 
-    expect(page).to have_content("Other Trips to this Destination")
-
     within ".similar-trips" do
+      expect(page).to have_content("Other Trips to this Destination")
       expect(page).to_not have_content(@trip_1.title)
 
       similar_trips.each do |trip|
@@ -71,5 +69,4 @@ RSpec.describe "As a visitor", type: :feature do
 
     expect(current_path).to eq(trip_path(@trip_2))
   end
-
 end

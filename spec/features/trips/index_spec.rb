@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe "As a visitor", type: :feature do
-
   before :each do
     @trip_1 = Trip.create!(title: "Cheese Tour 2020", destination_city: "Madison, WI", mileage: 1100)
     @trip_2 = Trip.create!(title: "Who is America Anyway?", destination_city: "Washington, D.C.", mileage: 300)
@@ -20,5 +19,4 @@ RSpec.describe "As a visitor", type: :feature do
     expect(page).to_not have_content(@trip_1.destination_city)
     expect(page).to_not have_content(@trip_1.mileage)
   end
-
 end
