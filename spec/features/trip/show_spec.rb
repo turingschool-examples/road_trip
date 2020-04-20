@@ -61,7 +61,5 @@ RSpec.describe "As a visitor when I visit a trips index page" do
 
     expect(current_path).to eq("/trips/#{@trip1.id}")
     expect(page).to_not have_content(@traveler1.name)
-
-    save_and_open_page
   end
 end
