@@ -1,8 +1,9 @@
 require "rails_helper"
 
-RSpec.describe "Trip", type: :model do
+RSpec.describe Trip, type: :model do
   describe 'releationships' do
-    
+    it {should have_many :trip_travelers}
+    it {should have_many(:travelers).through(:trip_travelers)}
   end
   
   describe 'instance methods' do
