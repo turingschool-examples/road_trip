@@ -7,8 +7,11 @@
 </section>
 <section class="travelers">
 <ul>
-  <% @trip.travelers.each do |traveler| %>
-    <li><%= traveler.name %></li>
+  <% @trip.trip_travelers.each do |trip_traveler| %>
+    <li id="traveler-<%= trip_traveler.traveler.id %>"> 
+      <%= trip_traveler.traveler.name %> 
+      <%= link_to "Remove", trip_traveler_path(trip_traveler.id), method: :delete %> 
+    </li>
   <% end %>
 </ul>
 </section>
