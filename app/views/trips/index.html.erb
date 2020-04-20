@@ -3,7 +3,7 @@
 <section class = "trips">
   <% @trips.each do |trip| %>
     <section class = "trip-info">
-      <h2><%= trip.title %></h2>
+      <h2><%= link_to trip.title, "/trips/#{trip.id}" %></h2>
     </section>
   <% end %>
 </section>
