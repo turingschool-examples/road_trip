@@ -38,7 +38,6 @@ RSpec.describe "when I visit a trip's show page" do
 
     visit "/trips/#{@trip_2.id}"
 
-    save_and_open_page
     expect(page).to have_link("D.C. Awareness Tour")
     expect(page).to_not have_link("Cheese Tour 2020")
   end
