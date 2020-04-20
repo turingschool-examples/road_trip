@@ -5,5 +5,6 @@
 <% @trip.travelers.each do |traveler| %>
   <section id="traveler-<%= traveler.id %>">
     <%= traveler.name %>
+    <%= button_to "Remove Traveler", "/trips/#{t@trip.id}", method: :destroy %>
   </section>
 <% end %>
