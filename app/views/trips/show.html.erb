@@ -14,5 +14,7 @@
 <%end%>
 <h3> Similar Trips </h3>
 <<article id="similar-trips">
-
+  <% @trip.similar_trips.each do |similar_trip| %>
+    <%= link_to "#{similar_trip.title}", "/trips/#{similar_trip.id}" %>
+  <% end %>
 </article>
