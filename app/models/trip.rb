@@ -5,4 +5,8 @@ class Trip < ApplicationRecord
   validates_presence_of :title,
                         :destination,
                         :mileage
+
+  def self.sorted_by_mileage
+    order('mileage')
+  end
 end
