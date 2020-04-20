@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   # namespace :travelers do
   #   resources :trips
   # end
+  get 'trips/:id', to: 'trips#show'
 
   get 'traveler/:id/trips', to: 'trips#index'
+  # get 'traveler/:id/trips/:trip_id', to: 'trips#show'
+
 
 end
