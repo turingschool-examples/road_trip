@@ -23,6 +23,8 @@ RSpec.describe 'As a visitor' do
     it 'Next to each traveler name I see a button to remove that traveler' do
       visit "/trips/#{@trip1.id}"
 
+      expect(page).to have_content(@traveler1.name)
+
       within "#traveler-#{@traveler1.id}" do
         click_button "Remove"
       end
@@ -31,6 +33,13 @@ RSpec.describe 'As a visitor' do
       expect(page).to_not have_content(@traveler1.name)
       expect(page).to have_content(@traveler2.name)
       expect(page).to have_content(@traveler3.name)
+    end
+    it 'I see other trips to this destination' do
+      visit "/trips/#{@trip1.id}"
+
+      within ".other-trips" do
+
+      end 
     end
   end
 
