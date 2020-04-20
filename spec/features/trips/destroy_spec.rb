@@ -8,12 +8,14 @@ RSpec.describe "As a visitor,", type: :feature do
       traveler1 = trip1.travelers.create!(name: "Sally Sue", age: 25)
       traveler2 = trip1.travelers.create!(name: "Tommy Tom", age: 46)
       traveler3 = trip1.travelers.create!(name: "Cory Cory", age: 19)
+      
       visit trip_path(trip1.id)
 
       within "#traveler-#{traveler1.id}" do 
         click_on "Delete Traveler"
       end
 
+      expect(current_path).to eq(trip_path(trip1.id))
       expect(page).to_not have_content(traveler1.name)
       expect(page).to have_content(traveler2.name)
       expect(page).to have_content(traveler3.name)
