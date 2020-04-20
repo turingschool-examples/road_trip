@@ -9,3 +9,12 @@
     <%= link_to "Remove", trip_path(@trip, traveler_id: "#{traveler.id}"), method: :patch %>
   </section>
 <% end %>
+
+<section class="similar-trips">
+  <h2>Other Trips to this Destination</h2>
+  <% @trip.similar_trips.each do |trip| %>
+    <section id="trip-<%= trip.id %>"
+      <p><%= link_to "#{trip.title}", trip_path(trip) %></p>
+    </section>
+  <% end %>
+</section>
