@@ -10,8 +10,17 @@
 </p>
 
 <section id="travelers">
-<p>Travelers on trip: </p>
-<% @trip.trip_travelers.each do |trip_traveler| %>
-  <li><%= trip_traveler.traveler.name %></li>
-<% end %>
+  <p>Travelers on trip: </p>
+  <% @trip.travelers.each do |traveler| %>
+  <section id="traveler-<%= traveler.id %>">
+    <li><%= traveler.name %></li>
+    <%= link_to "Remove Traveler", "/trips/#{@trip.id}?traveler=#{traveler.id}", method: :delete %>
+  </section>
+  <% end %>
+</section>
+
+<section id="similar-trips">
+  <% @trip.similar_trips.each do |trip| %>
+  <p><%= trip.title #need link%></p>
+  <% end %>
 </section>

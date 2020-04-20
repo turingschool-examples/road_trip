@@ -1,21 +1,23 @@
 class TripsController < ApplicationController
 
   def index
-    @trips = Trip.all
+    @trips = Trip.mileage_sort
   end
 
   def show
-    @trip = Trip.find(params[:id])
+    @trip = set_trip
   end
 
+  def destroy
+    #could put onto traveler controller time permitting
+    set_trip.travelers.destroy(params[:traveler])
+
+    redirect_to "/trips/#{params[:id]}"
+  end
 
   private
 
-    def set_trip
-      @trip = Trip.find(params[:id])
-    end
-
-    def trip_params
-      params.require(:trip).permit(:title, :destination_city, :mileage)
-    end
+  def set_trip
+    @trip = Trip.find(params[:id])
+  end
 end

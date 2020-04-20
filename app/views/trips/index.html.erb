@@ -11,11 +11,11 @@
 
   <tbody>
     <% @trips.mileage_sort.each do |trip| %>
-      <tr>
-        <td><%= link_to trip.title, "/trips/#{trip.id}" %></td>
-        <td><%= trip.destination_city %></td>
-        <td><%= trip.mileage %></td>
-      </tr>
+    <tr>
+      <td><%= link_to trip.title, "/trips/#{trip.id}" %></td>
+      <td><%= trip.destination_city %></td>
+      <td><%= trip.mileage %></td>
+    </tr>
     <% end %>
   </tbody>
 </table>
