@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   resources :trips
   resources :trip_travelers, only: :destroy
   
+  root 'trips#index'
 end
