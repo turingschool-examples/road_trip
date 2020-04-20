@@ -11,7 +11,7 @@ RSpec.describe 'As a visitor', type: :feature do
     @trip_1.travelers << [@traveler_1, @traveler_2, @traveler_3]
   end
 
-  it "on trips index page trips title is link whichs routs to trips show page" do
+  it "on trips index page trips title is link whichs routes to trips show page" do
     visit "/trips"
 
     expect(page).to have_link(@trip_1.title)
@@ -50,7 +50,7 @@ RSpec.describe 'As a visitor', type: :feature do
     expect(page).to_not have_content(@traveler_1.name)
   end
 
-  it "it has section called for other trips to this destination" do
+  it "it has section called other trips to this destination" do
     visit "/trips/#{@trip_1.id}"
 
 #need to set destination_city within this test to have a set city to compare with
