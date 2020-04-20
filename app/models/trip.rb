@@ -5,4 +5,8 @@ class Trip < ApplicationRecord
   def self.sorted_by_mileage
     Trip.all.order(:mileage)
   end
+
+  def similar_destination
+    Trip.where(['destination_city = ? and id != ?', self.destination_city, self.id])
+  end
 end
