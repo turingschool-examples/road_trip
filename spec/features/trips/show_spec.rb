@@ -30,11 +30,9 @@ RSpec.describe 'As a visitor' do
       expect(page).to have_content(@trip1.mileage)
 
       expect(page).to have_content("All Travelers:")
-      within(".trip-travelers") do
-        expect(page).to have_content(@traveler1.name)
-        expect(page).to have_content(@traveler2.name)
-        expect(page).to have_content(@traveler3.name)
-      end
+      expect(page).to have_content(@traveler1.name)
+      expect(page).to have_content(@traveler2.name)
+      expect(page).to have_content(@traveler3.name)
     end
   end
 end
