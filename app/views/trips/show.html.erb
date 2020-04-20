@@ -2,6 +2,8 @@
 <h2><%= @trip.destination_city %></h2><br/>
 <%= @trip.travelers%><br/>
 <%= @trip.mileage %>
-<%= @trip.travelers.first.name%>
+<% @trip.travelers.each do |traveler|%>
+  <%= traveler.name %>
+  <%= button_to "Remove Traveler", "/trips/#{@trip.id}/#{traveler.id}", method: :delete %>
+<% end %>
 
-<%= link_to  "Remove Traveler", "/trips/#{@trip.id}" %>

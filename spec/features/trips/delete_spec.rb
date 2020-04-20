@@ -2,7 +2,7 @@ require 'rails_helper'
 
 
 RSpec.describe "As a visitor", type: :feature do 
-  describe "When I click on a trips title" do 
+  describe "When I click on the remove traveler button" do 
     before :each do
       Traveler1 = Traveler.create!( name: "Sally Sue", age: 25)
       Traveler2 = Traveler.create!(name: "Tommy Tom", age: 46)
@@ -14,30 +14,14 @@ RSpec.describe "As a visitor", type: :feature do
       Trip3 = Traveler2.trips.create!(title: "The Big Apple", destination_city: "New York City, NY", mileage: 850)
       Trip4 = Traveler3.trips.create!(title: "Bike n’ Climb", destination_city: "Moab, UT", mileage: 700)
     end
-    it "I am taken to that trips show page" do 
-      visit "/trips"
 
-      click_link "#{Trip1.title}"
-
-      expect(current_path).to eq("/trips/#{Trip1.id}")
-      expect(page).to have_content(Trip1.title)  
-      expect(page).to have_content(Trip1.destination_city)  
-      expect(page).to have_content(Trip1.mileage)  
-      expect(page).to have_content(Trip1.travelers.first.name)  
-    end
-
-    it "I see a button to remove that traveler from the trip" do
+    it "I am redirected back to the trips show page and the traveler is no longer there" do 
       visit "/trips/#{Trip1.id}"
 
-      expect(page).to have_button("Remove Traveler")
+      click_button"Remove Traveler"
+
+      expect(current_path).to eq("/trips/#{Trip1.id}") 
+      save_and_open_page
     end
   end
 end
-
-
-# As a visitor
-# When I visit a trips show page
-# Next to each traveler’s name
-# I see a button to remove that traveler from the trip
-# When I click that button for a particular traveler
-# I am redirected back to the trips show page
