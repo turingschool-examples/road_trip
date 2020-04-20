@@ -14,11 +14,14 @@ RSpec.describe "When I visit a trips show page as a visitor", type: :feature do
 
     @traveler1 = Traveler.create!(name: "Sally Sue", age: 25)
     @traveler2 = Traveler.create!(name: "Tommy Tom", age: 46)
+    @traveler3 = Traveler.create!(name: "Bob", age: 50)
 
     TripTraveler.create(trip_id: @trip1.id, traveler_id: @traveler1.id)
-    TripTraveler.create(trip_id: @trip2.id, traveler_id: @traveler1.id)
+    TripTraveler.create(trip_id: @trip1.id, traveler_id: @traveler2.id)
     
-    TripTraveler.create(trip_id: @trip3.id, traveler_id: @traveler2.id)
+    TripTraveler.create(trip_id: @trip2.id, traveler_id: @traveler1.id)
+    TripTraveler.create(trip_id: @trip2.id, traveler_id: @traveler3.id)
+    
   end
 
   it "I see that trips title, destination city, mileage" do
@@ -36,5 +39,11 @@ RSpec.describe "When I visit a trips show page as a visitor", type: :feature do
   end
 
   it "I also see list of the names of the travelers that are on this trip" do
+    visit "/trips/#{@trip1.id}"
+
+    expect(page).to have_content(@traveler1.name)
+    expect(page).to have_content(@traveler2.name)
+    expect(page).not_to have_content(@traveler3.name)
+    
   end
 end

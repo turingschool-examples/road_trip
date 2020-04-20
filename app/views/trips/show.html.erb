@@ -1,3 +1,8 @@
 <h1><%= @trip.title %></h1>
 <p><%= @trip.dest_city %></p>
 <p><%= @trip.milage %></p>
+
+<h2>Travelers on this trip</h2>
+<% @trip.travelers.each do |traveler| %>
+  <p><%= traveler.name %></p>
+<% end %>
