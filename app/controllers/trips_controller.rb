@@ -8,6 +8,7 @@ class TripsController < ApplicationController
   end
 
   def destroy
-    binding.pry
+    Trip.find(params[:id]).travelers.destroy(params[:traveler])
+    redirect_to "/trips/#{params[:id]}"
   end
 end
