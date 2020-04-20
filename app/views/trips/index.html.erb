@@ -1,6 +1,6 @@
 <h1> All Trips </h1>
 
-<% @sorted_trips.each do |trip| %>
+<% @trips.each do |trip| %>
 <section id = "trip-<%= trip.id %>" class = "individual-trip" >
     <h2><%= link_to "#{trip.title}", trip_path(trip) %></h2>
   </section>
