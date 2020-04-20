@@ -15,3 +15,13 @@
   <% end %>
 </ul>
 </section>
+<section class="similar">
+<h3>Other Trips to this Destination</h3>
+  <ul>
+    <% @trip.similar_trips.each do |trip| %>
+      <li>
+        <%= link_to "#{trip.title}", trip_path(trip) %> 
+      </li>
+    <% end %>
+  </ul>
+</section>
