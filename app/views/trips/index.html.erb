@@ -1,7 +1,7 @@
 <h1>Trips Index</h1>
 <% @trips.mileage_asc.each_with_index do |trip, index| %>
   <div id= 'trip-<%=trip.id%>'>
-    <p><%= index + 1 %>. Trip: <%= trip.title %><br>
+    <p><%= index + 1 %>. Trip: <%= link_to trip.title, "/trips/#{trip.id}" %><br>
     Destination: <%= trip.destination_city %><br>
     Mileage: <%= trip.mileage %>
   </div>
