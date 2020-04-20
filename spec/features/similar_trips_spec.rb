@@ -29,7 +29,18 @@ RSpec.describe "similar trips" do
       end
     end
 
-    # it "all the names of the similar trips are links to that trips show page" do
-    # end
+    it "all the names of the similar trips are links to that trips show page" do
+
+      visit "/trips/#{@trip_1.id}"
+
+      within ".other-trips" do
+        expect(page).to have_link("#{@trip_5.title}")
+        expect(page).to have_link("#{@trip_6.title}")
+
+        click_link("#{@trip_7.title}")
+
+        expect(current_path).to eq("/trips/#{@trip_7.id}")
+      end
+    end
   end
 end
