@@ -35,6 +35,7 @@ describe "trips show page" do
         click_link("Remove Traveler")
       end
     end
+
     expect(current_path).to eq("/trips/#{@trip_1.id}")
     within("#travelers-list") do
       expect(page).to have_no_content(@traveler_1.name)
