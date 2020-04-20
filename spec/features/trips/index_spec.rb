@@ -16,4 +16,10 @@ RSpec.describe 'Trips index page' do
 
     expect(@trip2.name).to appear_before(@trip1.name)
   end
+
+  it "each trips name is a link to that trips show page" do
+    visit '/trips'
+    click_link @trip1.name
+    expect(page).to have_current_path("/trips/#{@trip1.id}")
+  end
 end
