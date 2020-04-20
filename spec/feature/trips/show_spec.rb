@@ -42,4 +42,21 @@ RSpec.describe "When I visit a trips show page", type: :feature do
     expect(page).to have_no_content(@traveler4.name)
     expect(page).to have_no_content(@traveler5.name)
   end
+
+  it "Next to each traveler’s name, I see a button to remove that traveler from the trip" do
+    visit "/trips/#{@trip1.id}"
+
+    within(".travelers-list") do
+      within("#traveler-#{@traveler1.id}") do
+        expect(page).to have_button("Remove from Trip")
+      end
+      within("#traveler-#{@traveler2.id}") do
+        expect(page).to have_button("Remove from Trip")
+      end
+      within("#traveler-#{@traveler3.id}") do
+        expect(page).to have_button("Remove from Trip")
+      end
+    end
+  end
+
 end
