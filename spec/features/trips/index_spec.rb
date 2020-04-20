@@ -18,5 +18,11 @@ describe 'When I visit /trips'
     @trip3.title.should appear_before(@trip1.title)
     @trip2.title.should appear_before(@trip1.title)
   end
+  it 'I can click a trip title and be taken to that trips show page' do
+    visit '/trips'
+    click_link @trip1.title 
+
+    expect(current_path).to eq("/trips/#{@trip1.id}")
+  end
 
 end
