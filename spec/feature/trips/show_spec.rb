@@ -87,4 +87,15 @@ RSpec.describe "When I visit a trips show page", type: :feature do
     end
   end
 
+  it "I can click on title of similar trip and be taken to trips show page" do
+    visit "/trips/#{@trip1.id}"
+    
+    within(".similar-trips") do
+      expect(page).to have_link(@trip3.title)
+      click_link(@trip4.title)
+    end
+
+    expect(current_path).to eql("/trips/#{@trip4.id}")
+  end
+
 end
