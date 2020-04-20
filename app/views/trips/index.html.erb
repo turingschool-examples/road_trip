@@ -1,5 +1,8 @@
-<%= @trips.each do |trip| %>
+<h2>All Road Trips</h2>
+<ol>
+<% @trips.each do |trip| %>
   <section id="Trip-<%=trip.id%>">
-    <%= trip.title %>
+    <li><%= trip.title %></li>
   </section>
 <% end %>
+</ol>

@@ -9,7 +9,7 @@ RSpec.describe "as a visitor" do
       trip4 = Trip.create(title: "Bike n’ Climb", destination: "Moab, UT", mileage: 700)
 
       visit '/trips'
-
+save_and_open_page
       within "#Trip-#{trip1.id}" do
         expect(page).to have_content("#{trip1.title}")
       end
@@ -28,23 +28,3 @@ RSpec.describe "as a visitor" do
     end
   end
 end
-# User Story 1, Trips Index Page
-# ​
-# As a visitor
-# When I visit a trips index page
-# I see the titles of all trips in my database listed in order of their mileage (ascending order)
-
-# Trip2
-# title: “Who is America Anyway?”
-# destination_city: “Washington, D.C.”
-# mileage: 300
-#
-# Trip3
-# title: “The Big Apple”
-# destination_city: “New York City, NY”
-# mileage: 850
-#
-# Trip4
-# title: “Bike n’ Climb”
-# destination_city: “Moab, UT”
-# mileage: 700
