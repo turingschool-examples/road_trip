@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "similar trips" do
+RSpec.describe "as a visitor I see similar trips on a trips show page" do
 
   before(:each) do
     @trip_1 = Trip.create(title: "Cheese Tour 2020", destination_city: "Madison, WI", mileage: 1100)
@@ -12,7 +12,7 @@ RSpec.describe "similar trips" do
     @trip_7 = Trip.create(title: "Snowmobile Heaven!", destination_city: "Madison, WI", mileage: 200)
   end
 
-  describe "I see a section of the page titled 'Other trips to this destination'" do
+  describe " when I visit a trips show page I see a section of the page titled 'Other trips to this destination'" do
     it "I see all other trip titles that have the same destination as this trip (not including the currrent trip)" do
 
       visit "/trips/#{@trip_1.id}"
