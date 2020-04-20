@@ -102,7 +102,20 @@ RSpec.describe 'TRIPS: ', type: :feature do
         expect(page).to have_link("#{trip_5.title}")
         expect(page).to have_link("#{@trip_2.title}")
         expect(page).to_not have_link("#{trip_6.title}")
-      end            
+      end
+    end
+
+    it 'sees notification if no other trips exist' do
+      visit '/trips'
+      click_link @trip_2.title
+
+      within "#other_trips" do
+        expect(page).to have_content("No Other Trips to This Destination")
+        expect(page).to_not have_link("#{@trip_1.title}")
+        expect(page).to_not have_link("#{@trip_2.title}")
+        expect(page).to_not have_link("#{@trip_3.title}")
+        expect(page).to_not have_link("#{@trip_4.title}")
+      end
     end
   end
 end
