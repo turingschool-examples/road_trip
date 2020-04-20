@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20200420151215) do
   create_table "trips", force: :cascade do |t|
     t.string "title"
     t.string "destination"
-    t.integer "milage"
+    t.integer "mileage"
   end
 
   add_foreign_key "trip_travelers", "travelers"
