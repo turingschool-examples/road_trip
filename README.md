@@ -38,13 +38,13 @@ Road Trip is an application that will track road trips as well as travelers. Roa
 3. Complete the following user stories (we would like to see you at least start on user story 4):
 ​
 ​
-```
+<!-- ```
 User Story 1, Trips Index Page
 ​
 As a visitor
 When I visit a trips index page
 I see the titles of all trips in my database listed in order of their mileage (ascending order)
-```
+``` -->
 ​
 ```
 User Story 2, Trips Show Page
