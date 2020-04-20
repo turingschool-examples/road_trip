@@ -6,6 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+TripTraveler.destroy_all
+Trip.destroy_all
+Traveler.destroy_all
+
 trip_1 = Trip.create!(title: "Cheese Tour 2020", destination_city: "Madison, WI", mileage: 1100)
 trip_2 = Trip.create!(title: "That 70's Tour", destination_city: "Madison, WI", mileage: 300)
 trip_3 = Trip.create!(title: "Great Lakes Vista", destination_city: "Madison, WI", mileage: 800)
