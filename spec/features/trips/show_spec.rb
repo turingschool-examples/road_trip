@@ -38,6 +38,8 @@ RSpec.describe "when I visit a trip's show page" do
 
     visit "/trips/#{@trip_1.id}"
 
+    save_and_open_page
+
     expect(page).to have_content("D.C. Awareness Tour")
     expect(page).to have_content("Cheese Tour 2020")
   end
