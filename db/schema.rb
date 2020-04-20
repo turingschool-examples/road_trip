@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200420151342) do
+ActiveRecord::Schema.define(version: 20200420152441) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "traveler_trips", force: :cascade do |t|
+    t.bigint "traveler_id"
+    t.bigint "trip_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["traveler_id"], name: "index_traveler_trips_on_traveler_id"
+    t.index ["trip_id"], name: "index_traveler_trips_on_trip_id"
+  end
 
   create_table "travelers", force: :cascade do |t|
     t.string "name"
@@ -30,4 +39,6 @@ ActiveRecord::Schema.define(version: 20200420151342) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "traveler_trips", "travelers"
+  add_foreign_key "traveler_trips", "trips"
 end
