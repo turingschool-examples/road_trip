@@ -31,6 +31,8 @@ RSpec.describe "When I visit a trips show page", type: :feature do
   end
 
   it "I see a list of the names of the travelers that are on this trip" do
+    visit "/trips/#{@trip1.id}"
+
     within(".travelers-list") do
       expect(page).to have_content(@traveler1.name)
       expect(page).to have_content(@traveler2.name)
