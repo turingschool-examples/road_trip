@@ -1,0 +1,7 @@
+<h1>TRIPS INDEX PAGE</h1>
+
+<seciton class="trip-info">
+  <% @trips.by_mileage.each do |trip| %>
+    <%= trip.name %>
+  <% end %>
+</seciton>
