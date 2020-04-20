@@ -3,7 +3,7 @@
 <section id = "trips">
   <ul>
     <% @trips.each do |trip| %>
-      <li><%= trip.title %></li>
+      <li><%= link_to trip.title, trip_path(trip) %></li>
     <% end %>
   </ul>
 </section>
