@@ -5,4 +5,8 @@ class Trip < ApplicationRecord
   def self.sort_by_mileage
     order(:mileage)    
   end
+
+  def same_destination_trips(destination)
+    Trip.where(destination: destination)
+  end
 end
