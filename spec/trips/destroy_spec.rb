@@ -18,8 +18,8 @@ RSpec.describe "Trip remove travelers", type: :feature do
 
     visit trip_path(trip1)
     
-    within ".travelers" do
-      click_link "#remove-#{traveler1.id}"
+    within "li#traveler-#{traveler1.id}" do
+      click_link "Remove"
     end
 
     expect(current_path).to eq(trip_path(trip1))
