@@ -2,6 +2,6 @@
 
 <ol>
   <% @trips.sorted_by_mileage.each do |trip| %>
-    <li><%= trip.title %></li>
+    <li><%=link_to trip.title, "/trips/#{trip.id}" %></li>
   <% end %>
 </ol>

@@ -25,7 +25,20 @@ RSpec.describe "as a visitor" do
       expect(@trip_3.title).to appear_before(@trip_1.title)
       expect(@trip_1.title).to_not appear_before(@trip_3.title)
 
-
     end
+
+    it "each title is a link to the trips show page" do
+
+      visit "/trips"
+
+      expect(page).to have_link("Cheese Tour 2020")
+      expect(page).to have_link("Who is America Anyway?")
+      expect(page).to have_link("The Big Apple")
+      expect(page).to have_link("Bike n’ Climb")
+
+      click_link "Cheese Tour 2020"
+
+      expect(current_path).to eq("/trips/#{@trip_1.id}")
+    end 
   end
 end
