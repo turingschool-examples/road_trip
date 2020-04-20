@@ -8,7 +8,7 @@ class TripsController < ApplicationController
   end
 
   def destroy
-    trip = Trip.find(params[:id])
-    binding.pry
+    trip = Trip.find(params[:id]).delete_traveler
+    redirect_to  trip_path(trip.id)
   end
 end

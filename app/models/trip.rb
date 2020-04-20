@@ -6,4 +6,8 @@ class Trip < ApplicationRecord
   def self.by_mileage
     all.order(mileage: :asc)
   end
+
+  def delete_traveler
+    binding.pry
+  end
 end
