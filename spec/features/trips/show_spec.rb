@@ -78,7 +78,8 @@ RSpec.describe "As a visitor", type: :feature do
       expect(page).to have_no_content(trip1.title)
       expect(page).to have_no_content(trip3.title)
       expect(page).to have_no_content(trip4.title)
+      click_on "#{trip2.title}"
     end
-
+    expect(current_path).to eql("/trips/#{trip2.id}")
   end
 end
