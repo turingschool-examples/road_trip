@@ -1,6 +1,6 @@
 <h1> All Trips sorted by mileage</h1>
 <ul>
 <% @trips.each do |trip| %>
-  <li>Title: <%=trip.title %> </li>
+  <li>Title: <%= link_to "#{trip.title}", "/trips/#{trip.id}" %> </li>
 <%end%>
 </ul>
