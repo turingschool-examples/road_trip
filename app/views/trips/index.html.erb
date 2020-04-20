@@ -1,4 +1,6 @@
 <h1>Trips Index</h1>
 <% @trips.sort_by_mileage(:asc).each do |trip| %>
-  <p class="trip_title"><%= trip.title %></p>
+  <section id="trip-<%= trip.id %>">
+    <p class="trip_title"><%= link_to trip.title, trip_path(trip) %></p>
+  </section>
 <% end %>
