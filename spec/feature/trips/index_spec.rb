@@ -15,4 +15,14 @@ RSpec.describe "When I visit a trips index page", type: :feature do
     expect(page.all(".trip_title")[2]).to have_content("The Big Apple")
     expect(page.all(".trip_title")[3]).to have_content("Cheese Tour 2020")
   end
+
+  it "I click on a trips title and am take to that trips show page" do
+    visit "/trips"
+
+    within("#trip-#{@trip2.id}") do
+      click_link @trip2.title
+    end
+
+    expect(current_path).to eql("/trips/#{@trip2.id}")
+  end
 end
