@@ -1,0 +1,10 @@
+<h2><%=@trip.title%> Info</h2>
+
+<h3>Trip Details</h3>
+<p>Destination: <%=@trip.destination%></p>
+<p>Total Miles: <%=@trip.miles%></p>
+
+<h3>Travelers</h3>
+<%@trip.travelers.each do |traveler|%>
+  <p><%=traveler.name%></p>
+<%end%>
