@@ -25,5 +25,19 @@ RSpec.describe "As a visitor", type: :feature do
       expect(page).to have_content(Trip1.mileage)  
       expect(page).to have_content(Trip1.travelers.first.name)  
     end
+
+    it "I see a button to remove that traveler from the trip" do
+      visit "/trips/#{Trip1.id}"
+
+      expect(page).to have_link("Remove Traveler")
+    end
   end
 end
+
+
+# As a visitor
+# When I visit a trips show page
+# Next to each traveler’s name
+# I see a button to remove that traveler from the trip
+# When I click that button for a particular traveler
+# I am redirected back to the trips show page

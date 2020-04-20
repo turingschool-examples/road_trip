@@ -3,3 +3,5 @@
 <%= @trip.travelers%><br/>
 <%= @trip.mileage %>
 <%= @trip.travelers.first.name%>
+
+<%= link_to  "Remove Traveler", "/trips/#{@trip.id}" %>
