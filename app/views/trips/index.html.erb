@@ -2,7 +2,6 @@
 
 <% @trips.each do |trip| %>
   <section class="trip-<%= trip.id %>">
-    <p><%= trip.title %></p>
-    <p><%= trip.mileage %></p>
+    <p><%= link_to "#{trip.title}", "/trips/#{trip.id}" %></p>
 </section>
 <% end %>

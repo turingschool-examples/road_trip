@@ -12,27 +12,23 @@ RSpec.describe "as a visitor when I visit the trips index page" do
 
     within ".trip-#{trip_1.id}" do
       expect(page).to have_content(trip_1.title)
-      expect(page).to have_content(trip_1.mileage)
     end
 
     within ".trip-#{trip_2.id}" do
       expect(page).to have_content(trip_2.title)
-      expect(page).to have_content(trip_2.mileage)
     end
 
     within ".trip-#{trip_3.id}" do
       expect(page).to have_content(trip_3.title)
-      expect(page).to have_content(trip_3.mileage)
     end
 
     within ".trip-#{trip_4.id}" do
       expect(page).to have_content(trip_4.title)
-      expect(page).to have_content(trip_4.mileage)
     end
 
-    expect("300").to appear_before("700")
-    expect("700").to appear_before("850")
-    expect("850").to appear_before("1100")
+    expect("Who is America Anyway?").to appear_before("Bike n’ Climb")
+    expect("Bike n’ Climb").to appear_before("The Big Apple")
+    expect("The Big Apple").to appear_before("Cheese Tour 2020")
 
   end
 end
