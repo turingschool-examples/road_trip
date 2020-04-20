@@ -4,5 +4,9 @@ class TripsController < ApplicationController
     @trips = Trip.all.order(mileage: :asc)
   end
 
+  def show
+    @trip = Trip.find(params[:id])
+  end
+
 
 end

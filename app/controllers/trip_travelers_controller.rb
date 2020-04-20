@@ -1,0 +1,5 @@
+class TripTravelers < ApplicationController
+
+
+
+end

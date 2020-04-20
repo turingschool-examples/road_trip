@@ -15,7 +15,5 @@ RSpec.describe "when I visit the trips index page" do
     expect(page).to have_link("#{@trip_1.title}")
     expect(page).to have_link("#{@trip_2.title}")
     expect(page).to have_link("#{@trip_3.title}")
-
-    save_and_open_page
   end
 end
