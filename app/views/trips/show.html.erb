@@ -1,16 +1,23 @@
 <h1><%= @trip.title %></h1>
 
-<section class = "trip-info">
-  <p>Destination: <%= @trip.destination %></p>
-  <p>Mileage: <%= @trip.mileage %></p>
-</section>
+  <section class = "trip-info">
+    <p>Destination: <%= @trip.destination %></p>
+    <p>Mileage: <%= @trip.mileage %></p>
+  </section>
 
-<h2>Travelers:</h2>
-<section class = "travelers">
-  <% @trip.travelers.each do |traveler| %>
-    <section class = "traveler-info" id = "traveler-<%= traveler.id %>">
-      <%= traveler.name %>
-      <%= button_to "Remove", "/travelers_trips/#{@trip.id}", params: { traveler: traveler.id }, method: :delete %>
-    </section>
-  <% end %>
-</section>
+  <h2>Travelers:</h2>
+  <section class = "travelers">
+    <% @trip.travelers.each do |traveler| %>
+      <section class = "traveler-info" id = "traveler-<%= traveler.id %>">
+        <p><%= traveler.name %></p>
+          <%= button_to "Remove", "/travelers_trips/#{@trip.id}", params: { traveler: traveler.id }, method: :delete %>
+      </section>
+    <% end %>
+  </section>
+
+  <h2>Other Trips to this Destination:</h2>
+  <section class = "similar-trips">
+    <% @trip.similar_trips.each do |trip| %>
+        <p><%= link_to trip.title, "/trips/#{trip.id}" %></p>
+    <% end %>
+  </section>

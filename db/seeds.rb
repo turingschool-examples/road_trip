@@ -3,6 +3,8 @@ trip1 = Trip.create(title: "Cheese Tour 2020", destination: "Madison, WI", milea
 trip2 = Trip.create(title: "“Who is America Anyway?", destination: "Washington, D.C.", mileage: 300)
 trip3 = Trip.create(title: "The Big Apple", destination: "Moab, UT", mileage: 700)
 trip4 = Trip.create(title: "Bike n’ Climb", destination: "New York City, NY", mileage: 850)
+trip5 = Trip.create(title: "New Years Eve 2022", destination: "New York City, NY", mileage: 850)
+trip6 = Trip.create(title: "Bushwig 2021", destination: "New York City, NY", mileage: 850)
 
 # Travelers
 traveler1 = Traveler.create(name: "Sally Sue", age: 25)

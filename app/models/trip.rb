@@ -10,4 +10,8 @@ class Trip < ApplicationRecord
     Trip.order(mileage: :asc)
   end
 
+  def similar_trips
+    Trip.where(destination: destination).where.not(id: id)
+  end
+
 end
