@@ -21,8 +21,6 @@ RSpec.describe "when click delete button for traveler on trip show page" do
       click_button "Remove Traveler"
     end
 
-    save_and_open_page
-
     expect(current_path).to eq("/trips/#{@trip_1.id}")
     expect(page).to_not have_content("#{@traveler_1.name}")
   end
