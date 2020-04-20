@@ -9,7 +9,8 @@ RSpec.describe Trip, type: :model do
   end
 
   describe "Relationships" do
-
+    it {should have_many :traveler_trips}
+    it {should have_many(:travelers).through(:traveler_trips)}
   end
 
   describe "Instance Methods" do

@@ -29,7 +29,7 @@ Road Trip is an application that will track road trips as well as travelers. Roa
 <!-- * Make a PR to turingschool-examples repo with your name as the title -->
 ​
 ## Tasks
-1. Create the tables for travelers and trips. You do not need to do validation testing.
+<!-- 1. Create the tables for travelers and trips. You do not need to do validation testing. -->
 
 ​
 2. Set up a many to many relationship between travelers and trips
