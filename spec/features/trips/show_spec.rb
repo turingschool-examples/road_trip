@@ -17,7 +17,6 @@ RSpec.describe "As a visitor", type: :feature do
       @trip1.travelers << [@traveler1, @traveler2]
       @trip2.travelers << [@traveler1, @traveler3]
       @trip4.travelers << [@traveler4]
-
     end
     it "I can click on a trips title, which takes me to the trip show page" do
       visit "/trips"
