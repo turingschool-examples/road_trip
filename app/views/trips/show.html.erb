@@ -10,7 +10,7 @@
     <% @trip.travelers.each do |traveler| %>
       <section class = "traveler-info" id = "traveler-<%= traveler.id %>">
         <p><%= traveler.name %></p>
-          <%= button_to "Remove", "/travelers_trips/#{@trip.id}", params: { traveler: traveler.id }, method: :delete %>
+           <%= button_to "Remove", trip_traveler_path(@trip.id, traveler.id), method: :delete %>
       </section>
     <% end %>
   </section>
