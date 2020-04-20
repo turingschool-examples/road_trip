@@ -2,7 +2,7 @@
 
 
 <% @trips.each do |trip| %>
-  <%= link_to "/trips/#{trip.id}", trip.title %>
+  <%= link_to trip.title, "/trips/#{trip.id}" %>
 <% end %>
 
 
