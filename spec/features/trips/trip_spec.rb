@@ -24,24 +24,47 @@ RSpec.describe 'TRIPS: ', type: :feature do
                                     age: 44)
     @traveler_5 = Traveler.create(  name: "Bertha",
                                     age: 9)
-
-
+    TravelerTrip.create( trip: @trip_1, traveler: @traveler_1 )
+    TravelerTrip.create( trip: @trip_1, traveler: @traveler_4 )
+    TravelerTrip.create( trip: @trip_1, traveler: @traveler_5 )
+    TravelerTrip.create( trip: @trip_2, traveler: @traveler_1 )
+    TravelerTrip.create( trip: @trip_2, traveler: @traveler_2 )
+    TravelerTrip.create( trip: @trip_2, traveler: @traveler_5 )
+    TravelerTrip.create( trip: @trip_3, traveler: @traveler_1 )
+    TravelerTrip.create( trip: @trip_3, traveler: @traveler_2 )
+    TravelerTrip.create( trip: @trip_3, traveler: @traveler_3 )
+    TravelerTrip.create( trip: @trip_4, traveler: @traveler_2 )
+    TravelerTrip.create( trip: @trip_4, traveler: @traveler_3 )
+    TravelerTrip.create( trip: @trip_4, traveler: @traveler_4 )
   end
   describe 'as a visitor when I visit the Trips Index Page I ' do
     it 'can see the title of all trips in ascending mileage order' do
       visit '/trips'
 
       expect(page).to have_content(@trip_1.title)
-      expect(page).to have_content(@trip_1.destination_city)
-      expect(page).to have_content(@trip_1.mileage)
-
       expect(page).to have_content(@trip_2.title)
-      expect(page).to have_content(@trip_3.destination_city)
-      expect(page).to have_content(@trip_4.mileage)
+      expect(page).to have_content(@trip_3.title)
+      expect(page).to have_content(@trip_4.title)
 
       expect(page.text.index(@trip_4.title)).to be < page.text.index(@trip_1.title)
       expect(page.text.index(@trip_1.title)).to be < page.text.index(@trip_2.title)
       expect(page.text.index(@trip_2.title)).to be < page.text.index(@trip_3.title)
+    end
+
+    it 'can click on the title to see details on the show page' do
+      visit '/trips'
+      click_link @trip_1.title
+      save_and_open_page
+
+      expect(page).to have_current_path("/trips/#{@trip_1.id}")
+      expect(page).to have_content(@trip_1.title)
+      expect(page).to have_content(@trip_1.destination_city)
+      expect(page).to have_content(@trip_1.mileage)
+      expect(page).to have_content(@traveler_1.name)
+      expect(page).to_not have_content(@traveler_2.name)
+      expect(page).to_not have_content(@traveler_3.name)
+      expect(page).to have_content(@traveler_4.name)
+      expect(page).to have_content(@traveler_5.name)
     end
   end
 end

@@ -1,5 +1,5 @@
 <h2>What A Long Strange Trip It's Been</h2>
 
 <% @trips.each do |trip| %>
-  <h4><%= trip.title %></h4>
+  <h4><%= link_to trip.title, "/trips/#{trip.id}" %></h4>
 <% end %>
