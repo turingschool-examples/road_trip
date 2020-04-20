@@ -1,4 +1,10 @@
 <h1>All Trips</h1>
 
-<%= @trips.all_trips_by_mileage_asc %>
+
+<% @trips.each do |trip| %>
+  <%= trip.title %>
+<% end %>
+
+
+
 
