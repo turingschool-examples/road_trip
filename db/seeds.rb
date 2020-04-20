@@ -26,7 +26,7 @@ trip4 = Trip.create(title: "Bike n’ Climb",
 
 trip5 = Trip.create(title: "Scary Houses",
                     destination_city: "Madison, WI",
-                    mileage: 1100)
+                    mileage: 1500)
 
 trip6 = Trip.create(title: "Wind for days",
                     destination_city: "New York City, NY",
@@ -34,7 +34,7 @@ trip6 = Trip.create(title: "Wind for days",
 
 trip7 = Trip.create(title: "Cheese and Wine",
                     destination_city: "Madison, WI",
-                    mileage: 1100)
+                    mileage: 1110)
 
 traveler1 = trip1.travelers.create(name: "Sally Sue", age: 25)
 traveler2 = trip1.travelers.create(name: "Tommy Tom", age: 46)
