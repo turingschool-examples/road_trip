@@ -1,0 +1,9 @@
+<h1>All Trips</h1>
+
+<section class = "trips">
+  <% @trips.each do |trip| %>
+    <section class = "trip-info">
+      <h2><%= trip.title %></h2>
+    </section>
+  <% end %>
+</section>
