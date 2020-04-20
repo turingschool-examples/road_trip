@@ -27,4 +27,20 @@ RSpec.describe "As a visitor", type: :feature do
     expect(page).to_not have_content(@traveler_3.name)
   end
 
+  it "I can remove a traveler from a trip" do
+    visit trip_path(@trip_1)
+
+    within "#traveler-#{@traveler_1.id}" do
+      expect(page).to have_link("Remove")
+    end
+
+    within "#traveler-#{@traveler_2.id}" do
+      click_link "Remove"
+    end
+
+    expect(current_path).to eq(trip_path(@trip_1))
+    expect(page).to have_content(@traveler_1.name)
+    expect(page).to_not have_content(@traveler_2.name)
+  end
+
 end
