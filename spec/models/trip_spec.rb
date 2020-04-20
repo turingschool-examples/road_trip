@@ -19,6 +19,7 @@ describe Trip, type: :model do
       @trip3 = Trip.create!(title: "Wisconsin World Tour", destination: "Madison, WI", miles: 1100)
 
       expect(@trip1.similar_destinations).to include(@trip2, @trip3)
+      expect(@trip1.similar_destinations).to_not include(@trip1)
     end
   end
 

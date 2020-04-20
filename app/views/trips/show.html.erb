@@ -12,5 +12,5 @@
 
 <h4>Other Trips to This Destination</h4>
 <%@trip.similar_destinations.each do |similar_trip|%>
-  <p><%=link_to similar_trip.title, "/trips/#{similar_trip.id}" if similar_trip.id != @trip.id%></p>
+  <p><%=link_to similar_trip.title, "/trips/#{similar_trip.id}"%></p>
 <%end%>

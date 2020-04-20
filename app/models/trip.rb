@@ -5,6 +5,7 @@ class Trip < ApplicationRecord
   has_many :travelers, through: :trip_travelers
 
     def similar_destinations
-      Trip.where(destination: self.destination)
+      similar_trips = Trip.where(destination: self.destination)
+      similar_trips.where.not(id: self.id)
     end
 end
