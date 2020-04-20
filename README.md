@@ -72,7 +72,7 @@ And I no longer see that traveler’s name listed
 
 Extension:
 
-```
+<!-- ```
 User Story 4, Similar Trips
 ​
 As a visitor
@@ -80,4 +80,4 @@ When I visit a trips show page
 I see a section on the page titled, “Other Trips to this Destination”
 And under that title I see a list of trip titles that have the same destination as this trip, but this should not include the trip who’s show page I’m on
 And all of those titles are links to that trips show page
-```
+``` -->
