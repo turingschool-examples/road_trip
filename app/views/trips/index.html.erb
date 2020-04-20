@@ -1,0 +1,7 @@
+<h1> All Trips </h1>
+
+<% @sorted_trips.each do |trip| %>
+<section id = "trip-<%= trip.id %>" class = "individual-trip" >
+    <h2><%= trip.title %></h2>
+  </section>
+<% end %>
