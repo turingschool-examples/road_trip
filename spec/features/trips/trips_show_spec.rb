@@ -46,7 +46,7 @@ RSpec.describe "trips index page", type: :feature do
           expect(page).to have_link("#{trip1.title}")
 
           click_link("#{trip1.title}")
-save_and_open_page
+
           expect(current_path).to eq("/trips/#{trip1.id}")
           expect(page).to have_content("#{trip1.title}")
           expect(page).to have_content("#{trip1.destination_city}")
