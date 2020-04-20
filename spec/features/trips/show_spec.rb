@@ -24,16 +24,12 @@ RSpec.describe "when I visit a trip's show page" do
 
   it "I can see the trip's title, destination city, mileage, along with trip's travelers " do
 
-    visit "/trips/#{@trip_1.id}"
+    visit "/trips/#{@trip_1.id}"    
 
     expect(page).to have_content("#{@trip_1.title}")
     expect(page).to have_content("#{@trip_1.destination_city}")
     expect(page).to have_content("#{@trip_1.mileage}")
+    expect(page).to have_content("#{@traveler_1.name}")
+    expect(page).to have_content("#{@traveler_2.name}")
   end
 end
-
-# And I also see a list of the names of the travelers that are on this trip
-
-# <h4> Name: <%= trip.title %></h4>
-# <h4> Destination City: <%= trip.destination_city %></h4>
-# <h4> Mileage: <%= trip.mileage %></h4>
