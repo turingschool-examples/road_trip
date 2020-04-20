@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Trip, type: :model do
+
+  describe "relationships" do
+    it {should have_many :trip_travelers}
+    it {should have_many(:travelers).through(:trip_travelers)}
+  end
+
   describe "class methods" do
     it "ordered" do
       trip_1 = Trip.create(title: "Cheese Tour 2020", destination_city: "Madison, WI", mileage: 1100)
