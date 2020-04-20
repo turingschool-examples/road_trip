@@ -40,16 +40,32 @@ RSpec.describe "as a visitor", type: :feature do
       expect(page).to have_content(@hannah.name)
       expect(page).to_not have_content(@lily.name)
     end
+  end
+
+  it "can remove a traveler from a trip" do
+    visit "trips/#{@trip4.id}"
+    within ".traveler-#{@hannah.id}" do
+      click_link("Remove from Trip")
+    end
+    expect(current_path).to eq("/trips/#{@trip4.id}")
+    within ".travelers" do
+      expect(page).to_not have_content(@hannah.name)
+      expect(page).to have_content(@molly.name)
+      expect(page).to have_content(@catherine.name)
+    end
     save_and_open_page
   end
+
 end
 
 #
-# User Story 2, Trips Show Page
+#
+# User Story 3, Remove a Traveler from a Trip
 #
 # As a visitor
-# When I visit a trips index page
-# And I click on a trips title
-# I’m taken to that trip’s show page
-# And I can see that trips title, destination city, mileage
-# And I also see a list of the names of the travelers that are on this trip
+# When I visit a trips show page
+# Next to each traveler’s name
+# I see a button to remove that traveler from the trip
+# When I click that button for a particular traveler
+# I am redirected back to the trips show page
+# And I no longer see that traveler’s name listed
