@@ -9,9 +9,15 @@ RSpec.describe "As a visitor", type: :feature do
     trip = Trip.create(title: "Cheese Tour 2020",
                         destination_city: "Madison, WI",
                         mileage: 1100)
+
+    trip2 = Trip.create(title: "Who is America Anyway?",
+                        destination_city: "Washington, D.C.",
+                        mileage: 300)
+
     traveler1 = trip.travelers.create(name: "Sally Sue", age: 25)
     traveler2 = trip.travelers.create(name: "Tommy Tom", age: 46)
     traveler3 = trip.travelers.create(name: "Cory Cory", age: 19)
+    traveler4 = trip2.travelers.create(name: "Bobby Bob", age: 34)
 
     visit "/trips"
     expect(page).to have_link(trip.title)
@@ -26,6 +32,7 @@ RSpec.describe "As a visitor", type: :feature do
     expect(page).to have_content(traveler1.name)
     expect(page).to have_content(traveler2.name)
     expect(page).to have_content(traveler3.name)
+    expect(page).to have_no_content(traveler4.name)
   end
 
   it "I can remove a traveler from a trip" do
