@@ -8,5 +8,9 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
   end
 
+  # def destroy
+  #   @trip = Trip.find(params[:id])
+  # end
+
 
 end
