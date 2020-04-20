@@ -19,11 +19,11 @@ RSpec.describe "As a visitor", type: :feature do
                         mileage: 700)
 
     visit "/trips"
-    
-    expect(trip1.title).to appear_before(trip3.title)
-    expect(trip3.title).to appear_before(trip4.title)
-    expect(trip4.title).to appear_before(trip2.title)
-    expect(page).to have_content(trip2.title)
+    expect(page.all('li')[0]).to have_content(trip2.title)
+    expect(page.all('li')[1]).to have_content(trip4.title)
+    expect(page.all('li')[2]).to have_content(trip3.title)
+    expect(page.all('li')[3]).to have_content(trip1.title)
+
 
   end
 end
