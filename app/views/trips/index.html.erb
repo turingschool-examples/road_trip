@@ -1,0 +1,7 @@
+<h1>Road Trips</h1>
+
+<h3><ol>
+  <% @trips.each do |trip| %>
+    <li><%= trip.title %> - <%= trip.mileage %> miles</li>
+  <% end %>
+</ol></h3>
