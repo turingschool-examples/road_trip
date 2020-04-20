@@ -1,7 +1,14 @@
 <h1> <%= @trip.title %> </h1>
 <p> Destination: <%= @trip.destination_city %>
 <p> Mileage: <%= @trip.mileage %>
-  
+<h3> Travelers: </h3>
 <% @trip.travelers.each do |traveler| %>
-  <p> <%= traveler.name %></p>
+  <article id="traveler-<%=traveler.id%>">
+      <p> <%= traveler.name %></p>
+      <form action="/trips/<%=@trip.id%>/<%=traveler.id%>" method="POST">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Remove traveler" id="Delete Traveler <%= traveler.id %>"/>
+      </form>
+  </article>
 <%end%>
