@@ -11,6 +11,6 @@
 <section class="other-trips">
   <h2>Other Trips To This Destination</h2>
   <% @trip.other_trips.each do |trip| %>
-    <%= link_to trip, trip_path(trip.id) %>
-  <% end %>  
+    <p><%= link_to trip.title, trip_path(trip.id) %></p>
+  <% end %>
 </section>

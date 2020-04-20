@@ -4,7 +4,8 @@ RSpec.describe 'As a visitor' do
   before :each do
     @trip1 = Trip.create!(title: "Fun", destination: "Madison", mileage: 300)
     @trip2 = Trip.create!(title: "Exciting", destination: "Nashville", mileage: 200)
-    @trip3 = Trip.create!(title: "OK", destination: "Denver", mileage: 100)
+    @trip3 = Trip.create!(title: "OK", destination: "Madison", mileage: 100)
+    @trip4 = Trip.create!(title: "Fine", destination: "Madison", mileage: 120)
     @traveler1 = @trip1.travelers.create!(name: "Tony", age: 45)
     @traveler2 = @trip1.travelers.create!(name: "Lisa", age: 90)
     @traveler3 = @trip1.travelers.create!(name: "Mark", age: 44)
@@ -38,8 +39,12 @@ RSpec.describe 'As a visitor' do
       visit "/trips/#{@trip1.id}"
 
       within ".other-trips" do
+        expect(page).to have_link(@trip3.title)
+        expect(page).to_not have_link(@trip1.title)
+        click_link @trip4.title
+      end
 
-      end 
+      expect(current_path).to eq("/trips/#{@trip4.id}")
     end
   end
 
