@@ -19,17 +19,35 @@ RSpec.describe "trip show page" do
         expect(page).to have_content(trav1.name) 
         expect(page).to have_content(trav2.name) 
         expect(page).to have_content(trav3.name) 
-      save_and_open_page
     end
+
+    it "can remove a traveler from a trip" do
+
+        trip1 = Trip.create!(name: "Spring Trip", destination: "Florida", mileage: 500)
+        trip2 = Trip.create!(name: "Summer Trip", destination: "New York", mileage: 250)
+        trip3 = Trip.create!(name: "Fall Trip", destination: "Alaska", mileage: 2000)
+        trav1 = trip1.travelers.create!(name: "Tom Cullen", age: 30)
+        # trav1 = Traveler.create(name: "Tom Cullen", age: 30)
+        tom = TravelerTrip.create(trip_id: trip1.id, traveler_id: trav1.id)
+        
+        # binding.pry
+        visit "/trips/#{trip1.id}"
+
+        # expect(page).to have_button("Remove Traveler") 
+# save_and_open_page
+        click_button "Remove Traveler"
+
+        expect(page).to_not have_content(trav1.name) 
+    end
+    
   end
 end
 
-
-
-
-# As a visitor
-# When I visit a trips index page
-# And I click on a trips title
-# I’m taken to that trip’s show page
-# And I can see that trips title, destination city, mileage
-# And I also see a list of the names of the travelers that are on this trip
+# s a visitor
+# When I visit a trips show page
+# Next to each traveler’s name
+# I see a button to remove that traveler from the trip
+# When I click that button for a particular traveler
+# I am redirected back to the trips show page
+# And I no longer see that traveler’s name listed
+# ```

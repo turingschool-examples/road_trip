@@ -1,7 +1,7 @@
 <h1>Trip Index</h1>
 
 <% @trips.each do |trip| %>
-    <p>Title: <%= trip.name %></p>
+    <p>Title: <%= link_to trip.name, "/trips/#{trip.id}" %></p>
     <p>Destination: <%= trip.destination %></p>
     <p>Mileage: <%= trip.mileage %></p>
 <% end %>
