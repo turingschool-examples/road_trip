@@ -1,0 +1,5 @@
+<h1>"My Trips Index"</h1>
+
+<% @traveler.trips_ordered.each do |trip| %>
+  <p><%= link_to "#{trip.title}" %></p>
+<% end %>
