@@ -21,6 +21,7 @@ RSpec.describe "trip index page" do
         expect(page).to have_content(trip3.name) 
         expect(page).to have_content(trip3.destination) 
         expect(page).to have_content(trip3.mileage) 
+        # save_and_open_page
     end
   end
 end
