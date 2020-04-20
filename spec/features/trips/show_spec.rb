@@ -11,17 +11,18 @@ RSpec.describe "As a visitor" do
     @traveler3 = @trip2.travelers.create(name: "Cory Cory", age: 19)
     @traveler4 = @trip3.travelers.create(name: "Mary Mae", age: 44)
     @traveler5 = @trip4.travelers.create(name: "Smith John", age: 9)
+    visit "/trips/#{@trip1.id}"
   end
 
-  it "I can view a trip" do
-    visit "/trips/#{@trip1.id}"
-
+  it "I can view a trip's basic information" do
     within('#trip-information') do
       expect(page).to have_content("#{@trip1.title} Information")
       expect(page).to have_content("Destination: #{@trip1.destination}")
       expect(page).to have_content("Mileage: #{@trip1.mileage}")
     end
+  end
 
+  it "I can view a trip's travelers" do
     within('.travelers') do
       expect(page).to have_content("Travelers")
       within("#traveler-#{@traveler1.id}") do
@@ -38,7 +39,7 @@ RSpec.describe "As a visitor" do
     end
   end
 
-  it "I can see similar trips" do
+  it "I can view a trip's similar trips" do
     visit "/trips/#{@trip1.id}"
 
     within('#similar-trips') do
