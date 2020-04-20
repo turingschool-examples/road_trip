@@ -60,8 +60,14 @@ RSpec.describe "when I visit the trip show page and click the name of a trip" do
 
     expect(current_path).to eq("/trips/#{@trip_1.id}")
 
-    expect(page).to have_content("Travelers on this trip: Tommy Tom, and Smith John")
+    expect(page).to have_content("Travelers on this trip: Tommy Tom and Smith John")
     expect(page).to_not have_content("Sally Sue")
 
+    #the following test shows that the traveler is not deleted entirely
+    #only removed from the trip
+
+    visit "/trips/#{@trip_3.id}"
+
+    expect(page).to have_content("Travelers on this trip: Sally Sue, Tommy Tom, Cory Cory, and Smith John")
   end
 end
