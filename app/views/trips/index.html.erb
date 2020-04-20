@@ -1,0 +1,9 @@
+<h1>All Trips</h1>
+
+<ol>
+<% @trips.order(:mileage).each do |trip| %>
+    <li>
+  <%= trip.title %>
+    </li>
+<% end %>
+</ol>
