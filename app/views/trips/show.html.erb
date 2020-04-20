@@ -9,3 +9,16 @@
       <%= button_to 'Remove Traveler', "/trips/#{@trip.id}/travelers/#{traveler.id}", method: :delete %>
     </section>
   <% end %>
+</section>
+<section id="similar-trips">
+  <h3>Other Trips to this Destination</h3>
+  <% if @trip.matching_trips? %>
+    <% @trip.similar_trips.each do |trip| %>
+      <% if trip.id != @trip.id %>
+        <p><%= link_to trip.name, "/trips/#{trip.id}" %></p>
+      <% end %>
+    <% end %>
+  <% else %>
+    <p>No trips match this trip's destination</p>
+  <% end %>
+</section>
