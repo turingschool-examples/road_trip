@@ -54,7 +54,6 @@ RSpec.describe 'TRIPS: ', type: :feature do
     it 'can click on the title to see details on the show page' do
       visit '/trips'
       click_link @trip_1.title
-      save_and_open_page
 
       expect(page).to have_current_path("/trips/#{@trip_1.id}")
       expect(page).to have_content(@trip_1.title)
@@ -64,6 +63,19 @@ RSpec.describe 'TRIPS: ', type: :feature do
       expect(page).to_not have_content(@traveler_2.name)
       expect(page).to_not have_content(@traveler_3.name)
       expect(page).to have_content(@traveler_4.name)
+      expect(page).to have_content(@traveler_5.name)
+    end
+
+    it 'can remove travelers from a trip' do
+      visit '/trips'
+      click_link @trip_1.title
+      within "#traveler_#{@traveler_4.id}" do
+        click_button "Remove Traveler"
+      end
+
+      expect(page).to have_current_path("/trips/#{@trip_1.id}")
+      expect(page).to_not have_content(@traveler_4.name)
+      expect(page).to have_content(@traveler_1.name)
       expect(page).to have_content(@traveler_5.name)
     end
   end

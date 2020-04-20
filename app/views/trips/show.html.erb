@@ -3,5 +3,9 @@
 <p>Mileage: <%= @trip.mileage %></p>
 <p>Fellow Travelers:</p>
 <% @trip.travelers.each do |traveler| %>
-  <p><%= traveler.name %></p>
+  <section id = <%= "traveler_#{traveler.id}"%>>
+    <p><%= traveler.name %></p>
+    <%= button_to "Remove Traveler", "/trips/#{@trip.id}", method: :patch, params: {traveler_id: "#{traveler.id}"}  %>
+
+  </section>
 <% end %>

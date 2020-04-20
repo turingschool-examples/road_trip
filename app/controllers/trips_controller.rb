@@ -8,10 +8,15 @@ class TripsController < ApplicationController
     @trip = Trip.find(trip_params[:id])
   end
 
+  def update
+    Trip.remove_traveler(trip_params)
+    redirect_to "/trips/#{trip_params[:id]}"
+  end
+
   private
 
   def trip_params
-    params.permit(:id)
+    params.permit(:id, :traveler_id)
   end
 
 end
