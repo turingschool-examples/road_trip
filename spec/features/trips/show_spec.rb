@@ -57,6 +57,17 @@ RSpec.describe 'As a visitor' do
 
       expect(current_path).to eql("/trips/#{@trip1.id}")
       expect(page).to have_no_css("#traveler-#{@traveler2.id}")
+
+      within("#traveler-#{@traveler3.id}") do
+        click_link "Remove Traveler"
+      end
+
+      expect(current_path).to eql("/trips/#{@trip1.id}")
+      expect(page).to have_no_css("#traveler-#{@traveler3.id}")
+
+      expect(page).to have_css("#traveler-#{@traveler1.id}")
+      expect(page).to have_css("#traveler-#{@traveler4.id}")
+      expect(page).to have_css("#traveler-#{@traveler5.id}")
     end
    end
   end
