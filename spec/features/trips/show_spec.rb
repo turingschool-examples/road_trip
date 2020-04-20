@@ -46,7 +46,6 @@ RSpec.describe "As a visitor", type: :feature do
     end
     it "When a click on a trips title, I see a section called 'Other Trips to this Destination'
         And under that title, I see a list of trip titles and links with the same destination" do
-
       visit trips_path
 
       click_link "#{@trip4.title}"
@@ -60,6 +59,5 @@ RSpec.describe "As a visitor", type: :feature do
         expect(page).to have_link("#{@trip6.title}", href: "/trips/#{@trip6.id}")
       end
     end
-
   end
 end

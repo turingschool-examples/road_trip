@@ -13,5 +13,4 @@ class Trip < ApplicationRecord
   def similar_trips
     Trip.where(destination: destination).where.not(id: id)
   end
-
 end
