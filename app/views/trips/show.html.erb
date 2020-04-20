@@ -12,3 +12,10 @@
   <li id="traveler-<%= traveler.id %>"><%= traveler.name %> | <%= button_to "Delete #{traveler.name} from this Trip", "/trips/#{@trip.id}?traveler=#{traveler.id}", method: :delete %></li>
   <% end %>
 </ul>
+
+<h3>Other Trips to this Destination</h3>
+<ul id="other-similar-trips">
+  <% @trip.similar_trips.each do |trip| %>
+  <li><%= link_to trip.title, trip_path(trip) %></li>
+  <% end %>
+</ul>
