@@ -5,6 +5,6 @@ Mileage: <%= @trip.mileage %><br>
 <h3>Travelers</h3>
 <% @trip.travelers.each do |traveler| %>
   <div id='traveler-<%=traveler.id%>'>
-    <%= traveler.name %> <%= link_to 'Remove', "/trips/#{traveler.id}", method: :delete %><br>
+    <%= traveler.name %> <%= link_to 'Remove', "/trips/#{@trip.id}?traveler=#{traveler.id}", method: :delete %><br>
   </div>
 <% end %>
