@@ -10,10 +10,10 @@ RSpec.describe "AS a visitor,", type: :feature do
       
       visit trips_path
 
-      expect(page.all('.trip-info')[0]).to have_content(trip1.name)
-      expect(page.all('.trip-info')[1]).to have_content(trip2.name)
-      expect(page.all('.trip-info')[2]).to have_content(trip3.name)
-      expect(page.all('.trip-info')[2]).to have_content(trip4.name)
+      expect(page.all('.trips')[0]).to have_content(trip4.title)
+      expect(page.all('.trips')[1]).to have_content(trip3.title)
+      expect(page.all('.trips')[2]).to have_content(trip2.title)
+      expect(page.all('.trips')[3]).to have_content(trip1.title)
     end 
   end 
 end
