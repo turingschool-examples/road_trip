@@ -82,4 +82,18 @@ RSpec.describe "As a visitor when I visit the trip show" do
       expect(page).to_not have_content(trip4.title)
     end 
   end
+    it 'I see a section called Other Trips titles are links to show page' do
+      trip1 = Trip.create!( title: "Cheese Tour 2020", destination: "Madison, WI", mileage: 1100)
+      trip2 = Trip.create!( title: "Boats and Stuff", destination: "Madison, WI", mileage: 1000)
+      trip3 = Trip.create!( title: "Giant Capital Building", destination: "Madison, WI", mileage: 900)
+      trip4 = Trip.create!( title: "Where A Lake Used to Be", destination: "Death Valley, CA", mileage: 1100)
+    
+      visit "/trips/#{trip1.id}"
+
+      within(".other-trips") do 
+        click_link "#{trip2.title}"
+      end 
+
+      expect(current_path).to eq("/trips/#{trip2.id}")
+    end
 end

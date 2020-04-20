@@ -11,8 +11,8 @@
 <section class="other-trips">
   <h3>Other Trips to this Destination:</h3>
   <% @trip.same_destination_trips(@trip.destination).each do |trip|%>
-    <% if !(@trip.title == trip.title)%>
-      <p><%= trip.title %></p>
+  <% if !(@trip.title == trip.title)%>
+      <p><%= link_to "#{trip.title}", "/trips/#{trip.id}" %></p>
     <% end %>
-   <% end %> 
+  <% end %>
 </section>
