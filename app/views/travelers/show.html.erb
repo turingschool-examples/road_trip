@@ -1,0 +1,9 @@
+<h1><%= @traveler.name %></h1>
+<p>Age: <%= @traveler.age %>
+<h2>Trips</h2>
+<% @traveler.trips.each do |trip| %>
+  <p><%= trip.title %><br>
+  <%= trip.mileage %>
+<% end %>
+<h2>Average Trip Mileage</h2>
+<%= @traveler.trip_avg %> miles
