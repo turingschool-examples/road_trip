@@ -7,3 +7,10 @@
 <% end %>
 <p>Average Mileage: <%= @traveler.average_mileage %></p>
 </p>
+
+<h2>Add A New Trip</h2>
+<%= form_tag("/travelers/#{@traveler.id}", method: :post) do %>
+    <%= label_tag "Trip" %>
+    <%= text_field_tag :trip %>
+    <%= submit_tag "submit" %>
+    <% end %>
