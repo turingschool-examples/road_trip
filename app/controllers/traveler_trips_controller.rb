@@ -1,4 +1,4 @@
-class TripsController < ApplicationController 
+class TravelerTripsController < ApplicationController 
   def create 
     traveler = Traveler.find(params[:id])
     trip = Trip.find(params[:trip_id])
