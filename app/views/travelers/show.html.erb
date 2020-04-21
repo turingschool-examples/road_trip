@@ -1,0 +1,25 @@
+<h1><%= @traveler.name.upcase %>'S SHOW PAGE</h1>
+
+<section class="traveler-info">
+  Name: <%= @traveler.name %></br>
+  Age: <%= @traveler.age %></br>
+</section>
+
+<section class="traveler-trips">
+  List of trips this traveler is on:</br>
+  <% @traveler.trips.each do |trip| %>
+    <%= trip.title %></br>
+  <% end %>
+</section>
+
+<section class="average-mileage">
+  Average Trip Mileage: <%= @traveler.average_mileage.round(2) %>
+</section>
+
+<seciton class="add-trip">
+  <%= form_tag "/travelers/#{@traveler.id}" do %>
+    <%= label_tag :trip_id %>
+    <%= text_field_tag :trip_id %>
+    <%= submit_tag "Submit" %>
+  <% end %>
+</section>
