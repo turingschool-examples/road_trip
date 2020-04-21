@@ -36,13 +36,18 @@ RSpec.describe 'Item Show Page' do
 
     it "I see traveler name, age, titles of trips theyre on" do
 
+      expect(current_path).to eq("/travelers/#{@traveler1.id}")
+
       expect(page).to have_content("#{@traveler1.name}")
       expect(page).to have_content("#{@traveler1.age}")
 
       expect(page).to have_content("#{@trip1.title}")
       expect(page).to have_content("#{@trip3.title}")
+
       expect(page).to have_content("#{@traveler1.average_mileage}")
-  end
+      expect(page).to_not have_content("#{@traveler4.name}")
+      expect(page).to_not have_content("#{@traveler4.age}")
+    end
 
     it "I see an add trip section with a form, if I enter an existing trip id, that trip is addeßd" do
 

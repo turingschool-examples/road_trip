@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  get "/travelers/:id", to: "travelers#show"
-  patch "/travelers/:id", to: "travelers#create_trips"
+  resources :travelers, only: [:show, :update]
+  # patch "/travelers/:id", to: "travelers#create_trips"
 end
