@@ -1,0 +1,8 @@
+<h1>Traveler Show Page</h1>
+
+<h2>Name: <%= @traveler.name %></h2>
+<p>Age: <%= @traveler.age %></p>
+<p>Trips: <% @traveler.trips.each do |trip| %>
+    <%= trip.title %>
+<% end %>
+</p>
