@@ -20,7 +20,7 @@ RSpec.describe "As a visitor" do
       expect(page).to have_content(@traveler1.name)
       expect(page).to have_content(@traveler1.age)
 
-      expect(page).to have_content(((1100.0/850.0)/2).round(1))
+      expect(page).to have_content(((1100.0 + 850.0)/2).round(1))
 
       within "#trip-#{@trip1.id}" do
         expect(page).to have_content(@trip1.title)
