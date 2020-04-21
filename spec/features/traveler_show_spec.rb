@@ -17,7 +17,7 @@ RSpec.describe "Traveler Show Page" do
       expect(page).to have_content(traveler.age)
       expect(page).to have_content(trip1.title)
       expect(page).to have_content(trip2.title)
-      expect(page).to have_content("Average Trip Mileage: 700")
+      expect(page).to have_content("Average Roadtrip Mileage: 700 miles")
     end
   end
 end
