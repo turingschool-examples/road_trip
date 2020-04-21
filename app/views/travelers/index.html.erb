@@ -1,0 +1,4 @@
+<h1>Travelers Index</h1>
+<% @travelers.each do |traveler| %>
+  <p><%= link_to "#{traveler.name}", "/travelers/#{traveler.id}" %>
+<% end %>
