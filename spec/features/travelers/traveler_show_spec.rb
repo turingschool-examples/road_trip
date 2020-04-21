@@ -15,7 +15,7 @@ RSpec.describe "As a visitor" do
     it "I see the traveler’s name and age
     And I see all of the titles of the trips that this traveler is on
     And I also see the average mileage of all of that traveler’s road trips" do
-      visit "/traveler/#{@traveler1.id}"
+      visit "/travelers/#{@traveler1.id}"
 
       expect(page).to have_content(@traveler1.name)
       expect(page).to have_content(@traveler1.age)
