@@ -8,3 +8,13 @@
 <% end %>
 
 <%= "Average Mileage of Trips: #{@traveler.avg_mileage}" %>
+
+<section id="new-trip-form">
+  Add a trip
+  <%= form_tag "/travelers/#{@traveler.id}", method: :patch do %>
+    <%= label_tag :trip_id %>
+    <%= text_field_tag :trip_id %>
+
+    <%= submit_tag 'Add' %>
+  <% end %>
+</section>
