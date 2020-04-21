@@ -27,9 +27,3 @@ RSpec.describe "As a visitor", type: :feature do
     end
   end
 end
-
-# As a visitor
-# When I visit a traveler’s show page
-# I see the traveler’s name and age
-# And I see all of the titles of the trips that this traveler is on
-# And I also see the average mileage of all of that traveler’s road trips
