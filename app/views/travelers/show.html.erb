@@ -15,3 +15,11 @@
 <section class="average-mileage">
   Average Trip Mileage: <%= @traveler.average_mileage %>
 </section>
+
+<seciton class="add-trip">
+  <%= form_tag "/travelers/#{@traveler.id}" do %>
+    <%= label_tag :trip_id %>
+    <%= text_field_tag :trip_id %>
+    <%= submit_tag "Submit" %>
+  <% end %>
+</section>
