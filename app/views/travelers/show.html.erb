@@ -1,0 +1,10 @@
+<%= @traveler.name %>
+<%= @traveler.age %>
+
+<% @traveler.trips.each do |trip| %>
+  <section id="trip-<% trip.id %>">
+    <%= trip.title %>
+  </section>
+<% end %>
+
+<%= "Average Mileage of Trips: #{@traveler.avg_mileage}" %>
