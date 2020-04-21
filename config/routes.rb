@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  get '/travelers/:id', to: 'travelers#show'
+  resources :travelers
+  get '/travelers/:traveler_id/trips/new', to: 'trips#new'
+  post '/travelers/:traveler_id/trips', to: 'trips#create'
+
 end
