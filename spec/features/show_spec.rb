@@ -30,19 +30,31 @@ RSpec.describe 'Item Show Page' do
       TravelerTrip.create!(trip_id: @trip4.id, traveler_id: @traveler2.id)
       TravelerTrip.create!(trip_id: @trip4.id, traveler_id: @traveler4.id)
       TravelerTrip.create!(trip_id: @trip4.id, traveler_id: @traveler5.id)
-    end
-
-    it 'I see traveler name, age, titles of trips theyre on, ' do
 
       visit "/travelers/#{@traveler1.id}"
+    end
+
+    it "I see traveler name, age, titles of trips theyre on" do
 
       expect(page).to have_content("#{@traveler1.name}")
       expect(page).to have_content("#{@traveler1.age}")
-
-      save_and_open_page
 
       expect(page).to have_content("#{@trip1.title}")
       expect(page).to have_content("#{@trip3.title}")
       expect(page).to have_content("#{@traveler1.average_mileage}")
   end
+
+    it "I see an add trip section with a form, if I enter an existing trip id, that trip is addeßd" do
+
+      expect(page).to have_content("Add Trip")
+
+      fill_in 'trip_id', with: "#{@trip4.id}"
+
+      click_button "Submit"
+
+      save_and_open_page
+
+      expect(current_path).to eq("/travelers/#{@traveler1.id}")
+      expect(page).to have_content("#{@trip4.title}")
+    end
 end

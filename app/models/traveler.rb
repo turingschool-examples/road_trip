@@ -3,6 +3,6 @@ class Traveler <ApplicationRecord
   has_many :trips, through: :traveler_trips
 
   def average_mileage
-    trips.average(:mileage)
+    trips.average(:mileage).to_i
   end
 end

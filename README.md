@@ -27,7 +27,6 @@ RSpec and Shoulda-Matchers have been installed and set up.
 ## Tasks
 1. Complete the two user stories below (Sad path testing is not required)
 ​
-​
 ```
 User Story 1, Traveler Show Page
 ​
@@ -50,46 +49,3 @@ And click submit
 I’m redirected to the traveler’s show page
 Where I see the title of that trip I just added to the traveler on the page
 ```
-
-Possible Data to use:
-
-Trip1
-title: “Cheese Tour 2020”
-destination_city: “Madison, WI”
-mileage: 1100
-
-Trip2
-title: “Who is America Anyway?”
-destination_city: “Washington, D.C.”
-mileage: 300
-
-Trip3
-title: “The Big Apple”
-destination_city: “New York City, NY”
-mileage: 850
-
-Trip4
-title: “Bike n’ Climb”
-destination_city: “Moab, UT”
-mileage: 700
-
-Traveler1
-name: “Sally Sue”
-age: 25
-
-Traveler2
-name: “Tommy Tom”
-age: 46
-
-Traveler3
-name: “Cory Cory”
-age: 19
-
-Traveler4
-name: “Mary Mae”
-age: 44
-
-Traveler5
-name: “Smith John”
-age: 9
-Ausblenden

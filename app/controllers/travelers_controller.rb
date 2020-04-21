@@ -4,4 +4,10 @@ class TravelersController < ApplicationController
     @traveler = Traveler.find(params[:id])
   end
 
+  def create_trips
+    trip = Trip.find(params[:trip_id])
+    traveler = Traveler.find(params[:id])
+    trip.traveler_trips.create(traveler_id: traveler.id, trip_id: trip.id)
+    redirect_to "/travelers/#{traveler.id}"
+  end
 end
