@@ -1,0 +1,15 @@
+<h2><%= "Name: #{@traveler.name}"%></h2>
+<h3><%= "Age: #{@traveler.age}"%></h3>
+<% @traveler.trips.each do |trip| %>
+  <h3><%= trip.title %><h3>
+<% end %>
+<%= "Average Mileage: #{@traveler.trips.average(:mileage)}" %>
+
+<h2>Add a trip</h2><br />
+
+<%= form_tag "/travelers/#{@traveler.id}/trips" do %>
+  <%= label_tag :Trip_ID %>
+  <%= number_field_tag :Trip_ID %>
+
+  <%= submit_tag 'Submit' %>
+<% end %>
